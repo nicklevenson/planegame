@@ -1,0 +1,41 @@
+#game {
+  position: relative;
+  height: 700px;
+  width: 1000px;
+  background-color: lightblue;
+}
+
+
+#plane {
+  position: absolute;
+  background-color: white;
+  height: 50px;
+  width: 15px;
+  bottom: 0;
+  left: 485px;
+  z-index: 10;
+  transform: rotate(90);
+}
+
+
+
+#target {
+  background-color:black;
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  left: 400px;
+  top: 100px;
+}
+
+#speedSlider {
+  background-color: black;
+  height: 50px;
+  width: 400px;
+}
+
+#slide {
+  background-color: red;
+  height: 50px;
+  width: 0px;
+}
