@@ -14,7 +14,7 @@
   bottom: 0;
   left: 485px;
   z-index: 10;
-  transform: rotate(90);
+  transform: rotate(-45deg);
 }
 
 
