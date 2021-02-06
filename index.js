@@ -12,7 +12,7 @@ function movePlane() {
   move = setInterval(() => inchPlane(distance), 1 / (distance / 1000));
 }
 
-function anglePlane(angle, direction) {
+function anglePlane(angle = -45, direction = "right") {
   let tr = window.getComputedStyle(plane).transform
   var values = tr.split('(')[1],
   values = values.split(')')[0],
@@ -20,12 +20,27 @@ function anglePlane(angle, direction) {
   let b = values[1];
   angle = Math.round(Math.asin(b) * (180/Math.PI));
   
-  console.log(angle)
-  // angleLoop(angle)
+  if (direction === "right") {
+    plane.style.transform = `rotate(${angle + 1}deg)`
+  }
+  if (direction === "left") {
+    plane.style.transform = `rotate(${angle - 1}deg)`
+  }
+  
+  if (angle === -45) {
+    direction = "right"
+  }
+    
+  if (angle === 45) {
+    direction = "left"
+  }
+
+  angleLoop(angle, direction)
+
 }
 
 
-function angleLoop() {
+function angleLoop(angle, direction) {
   doAngle = setTimeout(function() {anglePlane(angle, direction)}, 1)
 }
 
