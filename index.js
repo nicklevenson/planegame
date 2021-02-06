@@ -18,8 +18,7 @@ function startAngle() {
 function startSlide() {
   document.addEventListener('keyup', function(e){
     if (e.code === "Space") {
-      movePlane() 
-      
+      movePlane()  
     }
   })
 }
@@ -27,7 +26,8 @@ function startSlide() {
 function movePlane() {
   clearTimeout(doSlide)
   let distance = slide.clientWidth * 1.5;
-  console.log( 1 / (distance / 1000))
+  let leftDistance = pythagorean(distance, Math.abs(getAngle()))
+  console.log(leftDistance)
   move = setInterval(() => inchPlane(distance), 1 / (distance / 1000));
 }
 
@@ -59,6 +59,13 @@ function getAngle() {
 
 function angleLoop(angle, direction) {
   doAngle = setTimeout(function() {anglePlane(angle, direction)}, 1)
+}
+
+function pythagorean(sideC, angle){
+  realAngle = angle + 45
+  const sideB = sideC * Math.sin((realAngle*Math.PI/180))
+  const sideA = Math.sqrt((sideC ** 2) - (sideB ** 2))
+  return sideA
 }
 
 function inchPlane(distance) {
