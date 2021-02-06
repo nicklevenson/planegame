@@ -62,7 +62,7 @@ function angleLoop(angle, direction) {
 }
 
 function pythagorean(sideC, angle){
-  realAngle = angle + 45
+  realAngle = angle + 90
   const sideB = sideC * Math.sin((realAngle*Math.PI/180))
   const sideA = Math.sqrt((sideC ** 2) - (sideB ** 2))
   return sideA
