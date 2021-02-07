@@ -23,6 +23,7 @@ function startSlide() {
     if (e.code === "Space") {
       clearTimeout(doSlide)
       movePlane() 
+      rotatePlane()
     }
   })
 }
@@ -41,7 +42,7 @@ function rotatePlane() {
   ctx.rotate(angle);
 
   ctx.fillStyle = 'red';
-  ctx.fillRect(-10, -25, 20, 50);
+  ctx.fillRect(0, 0, 20, 50);
   
   if (angle >= 1) {
     direction = "left"
@@ -67,16 +68,24 @@ function anglePlane(angle, direction) {
 }
 
 function movePlane() {
-
   let XY = getTrajectory()
-  ctx.translate(XY.x, XY.y);
-  ctx.rotate(angle);
-  ctx.fillStyle = 'red';
   if (angle >= 0) {
-    ctx.fillRect(x - XY.x, y + XY.y, 20, 50);
+    x -= XY.x
+    y += XY.y
   }else{
-    ctx.fillRect(x + XY.x, y + XY.y, 20, 50);
+    x += XY.x
+    y += XY.y
   }
+  
+  // let XY = getTrajectory()
+  // ctx.translate(XY.x, XY.y);
+  // ctx.rotate(angle);
+  // ctx.fillStyle = 'red';
+  // if (angle >= 0) {
+  //   ctx.fillRect(x - XY.x, y + XY.y, 20, 50);
+  // }else{
+  //   ctx.fillRect(x + XY.x, y + XY.y, 20, 50);
+  // }
     
   
 }
