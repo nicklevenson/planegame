@@ -11,6 +11,7 @@ function startAngle() {
   document.addEventListener('keyup', function space(e){
     if (e.code === "Space") {
       clearInterval(anglage)
+      
       sliderLoop()
       startSlide()
       document.removeEventListener("keyup", space);
@@ -21,13 +22,13 @@ function startSlide() {
   document.addEventListener('keyup', function(e){
     if (e.code === "Space") {
       clearTimeout(doSlide)
-      getTrajectory() 
+      movePlane() 
     }
   })
 }
 
-let x = canvas.width/2;
-let y = canvas.height/2;
+let x = 350;
+let y = 30;
 let dx = 0;
 let dy = 0;
 
@@ -36,12 +37,12 @@ let direction = "right"
 
 
 function rotatePlane() {  
-  ctx.translate(canvas.width / 2, canvas.height / 2);
+  ctx.translate(x, y);
   ctx.rotate(angle);
 
   ctx.fillStyle = 'red';
-  ctx.fillRect(20 / -2, 50 / -2, 20, 50);
- 
+  ctx.fillRect(-10, -25, 20, 50);
+  
   if (angle >= 1) {
     direction = "left"
   }   
@@ -66,25 +67,32 @@ function anglePlane(angle, direction) {
 }
 
 function movePlane() {
+
   let XY = getTrajectory()
-  ctx.fillRect(20 / -2, 50 / -2, 20, 50);
+  ctx.translate(XY.x, XY.y);
+  ctx.rotate(angle);
+  ctx.fillStyle = 'red';
+  if (angle >= 0) {
+    ctx.fillRect(x - XY.x, y + XY.y, 20, 50);
+  }else{
+    ctx.fillRect(x + XY.x, y + XY.y, 20, 50);
+  }
+    
+  
 }
 
-function radians_to_degrees(radians){
-  let pi = Math.PI;
-  return radians * (180/pi);
-}
 
-function getX(sideC, angle){
-  const sideB = sideC * Math.sin((angle*Math.PI/180))
+
+function getX(sideB, angle){
+  const sideC = sideB / (Math.cos(angle))
   const sideA = Math.sqrt((sideC ** 2) - (sideB ** 2))
-  return sideA
+  return sideA - 20
 }
 
 function getTrajectory() {
-  moveY = slide.clientWidth * 1.5;
-  moveX = getX(moveY, radians_to_degrees(angle))
-  return {moveY, moveX}
+  moveY = slide.clientWidth / 2;
+  moveX = getX(moveY, angle)
+  return {y: moveY, x: moveX}
 }
 
  
