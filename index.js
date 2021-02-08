@@ -4,9 +4,11 @@ let canvas = document.getElementById("myCanvas");
 let ctx = canvas.getContext("2d");
 ctx.transform(1, 0, 0, -1, 0, canvas.height)
 
+const img = document.getElementById("plane")
+
 const targetInfo = getTarget()
 const target = targetInfo.target
-const target2 = targetInfo.target2
+const target2 = targetInfo.target2 
 const target3 = targetInfo.target3
 
 
@@ -30,6 +32,7 @@ function startSlide() {
       clearTimeout(doSlide)
       movePlane() 
       document.removeEventListener("keyup", space);
+      
     }
   })
 }
@@ -48,7 +51,8 @@ function rotatePlane() {
   ctx.translate(x, y);
   ctx.rotate(angle);
   ctx.fillStyle = 'red';
-  ctx.fillRect(0, 0, 5, 20);
+  // ctx.fillRect(0, 0, 5, 20);
+  ctx.drawImage(img,0,0,20,50)
   if (angle >= 1) {
     direction = "left"
   }   
@@ -93,7 +97,8 @@ function forwardPlane() {
   ctx.translate(x, y);
   ctx.rotate(angle);
   ctx.fillStyle = 'red';
-  ctx.fillRect(0, 0, 5, 20);
+  // ctx.fillRect(0, 0, 5, 20);
+  ctx.drawImage(img,0,0,20,50)
   if (angle >= 0) {
       x -= ((400 - dx)/500)
       y += (( dy-30)/500)
@@ -104,6 +109,7 @@ function forwardPlane() {
   ctx.restore();
   if (Math.round(x) === Math.round(dx) && Math.round(y) === Math.round(dy)) {
     clearInterval(anglage)
+    console.log(collision())
   }
 }
 
@@ -173,7 +179,7 @@ function collision() {
     yAdjust += getXYAdjust().y
   } 
   if ((x + xAdjust >= target3.x && x + xAdjust <= target3.x + target3.w)&&(y + yAdjust>= target3.y && y + yAdjust <= target3.y + target3.h)) {
-    return 3
+    return 5
   }
   if ((x + xAdjust >= target2.x && x + xAdjust <= target2.x + target2.w)&&(y + yAdjust >= target2.y && y + yAdjust<= target2.y + target2.h)) {
     return 2
@@ -187,7 +193,20 @@ function collision() {
 
 
 function getXYAdjust() {
-  let a = 20 * Math.sin(angle)
-  let b = Math.sqrt((20**2) - (a**2))
-  return {x: Math.abs(a - 2.5), y: b}
+  let a = 50 * Math.sin(angle)
+  let b = Math.sqrt((50**2) - (a**2))
+  return {x: Math.abs(a - 25), y: b}
 }
+
+canvas.addEventListener("mousedown", function(e) 
+{ 
+    getMousePosition(canvas, e); 
+}); 
+
+function getMousePosition(canvas, event) { 
+  let rect = canvas.getBoundingClientRect(); 
+  let x = event.clientX - rect.left; 
+  let y = event.clientY - rect.top; 
+  console.log("Coordinate x: " + x,  
+              "Coordinate y: " + (500 - y)); 
+} 
