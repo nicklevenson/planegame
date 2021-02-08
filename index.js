@@ -10,8 +10,10 @@ const targetInfo = getTarget()
 const target = targetInfo.target
 const target2 = targetInfo.target2 
 const target3 = targetInfo.target3
-
-
+let windY = .5
+let windX = .5
+let gravity = 500
+let power = 0
 
 startAngle()
 
@@ -52,7 +54,7 @@ function rotatePlane() {
   ctx.rotate(angle);
   ctx.fillStyle = 'red';
   // ctx.fillRect(0, 0, 5, 20);
-  ctx.drawImage(img,0,0,20,50)
+  ctx.drawImage(img,-20,0,40,50)
   if (angle >= 1) {
     direction = "left"
   }   
@@ -91,6 +93,7 @@ function movePlane() {
 }
 
 function forwardPlane() {
+  // angle += wind
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   drawTarget()
   ctx.save();
@@ -98,9 +101,9 @@ function forwardPlane() {
   ctx.rotate(angle);
   ctx.fillStyle = 'red';
   // ctx.fillRect(0, 0, 5, 20);
-  ctx.drawImage(img,0,0,20,50)
+  ctx.drawImage(img,-20,0,40,50)
   if (angle >= 0) {
-      x -= ((400 - dx)/500)
+      x -= ((400 - dx)/500) 
       y += (( dy-30)/500)
   }else{
       x += ((dx - 400)/500)
@@ -111,6 +114,13 @@ function forwardPlane() {
     clearInterval(anglage)
     console.log(collision())
   }
+  dy -= windY
+  dx -= windX
+  if (power === 0) {
+    clearInterval(anglage)
+    console.log(collision())
+  }
+  power -= 1
 }
 
 function getXY(sideC, angle){
@@ -120,7 +130,7 @@ function getXY(sideC, angle){
 }
 
 function getTrajectory() {
-  let power = slide.clientWidth + 150;
+  power = slide.clientWidth + 150;
   let XY = getXY(power, angle)
   let moveY = XY.sideB
   let moveX = Math.abs(XY.sideA)
@@ -178,6 +188,8 @@ function collision() {
     xAdjust += getXYAdjust().x
     yAdjust += getXYAdjust().y
   } 
+  // ctx.fillStyle="black"
+  // ctx.fillRect(x + xAdjust, y+yAdjust, 4,4)
   if ((x + xAdjust >= target3.x && x + xAdjust <= target3.x + target3.w)&&(y + yAdjust>= target3.y && y + yAdjust <= target3.y + target3.h)) {
     return 5
   }
@@ -189,24 +201,14 @@ function collision() {
   }else{
     return 0
   }
+  
 }
 
 
 function getXYAdjust() {
+ 
   let a = 50 * Math.sin(angle)
   let b = Math.sqrt((50**2) - (a**2))
-  return {x: Math.abs(a - 25), y: b}
+  return {x: Math.abs(a), y: b}
 }
 
-canvas.addEventListener("mousedown", function(e) 
-{ 
-    getMousePosition(canvas, e); 
-}); 
-
-function getMousePosition(canvas, event) { 
-  let rect = canvas.getBoundingClientRect(); 
-  let x = event.clientX - rect.left; 
-  let y = event.clientY - rect.top; 
-  console.log("Coordinate x: " + x,  
-              "Coordinate y: " + (500 - y)); 
-} 
