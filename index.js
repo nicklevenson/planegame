@@ -92,10 +92,10 @@ function forwardPlane() {
   ctx.fillRect(0, 0, 5, 20);
   if (angle >= 0) {
     if (x > dx) {
-      x--
+      x = x - (dx/dy)
     }
     if (y < dy) {
-      y++
+      y = y + (dy/dx)
     }
   }else{
     if (x < dx) {
