@@ -43,7 +43,7 @@ function rotatePlane() {
 
   ctx.fillStyle = 'red';
   ctx.beginPath();
-  ctx.fillRect(0, 0, 20, 50);
+  ctx.fillRect(0, 0, 5, 20);
   ctx.closePath()
   if (angle >= 1) {
     direction = "left"
@@ -86,15 +86,19 @@ function movePlane() {
 
 
 
-function getX(sideB, angle){
-  const sideC = sideB / (Math.cos(angle))
-  const sideA = Math.sqrt((sideC ** 2) - (sideB ** 2))
-  return sideA - 20
+function getXY(sideC, angle){
+  // const sideC = sideB / (Math.cos(angle))
+  // const sideA = Math.sqrt((sideC ** 2) - (sideB ** 2))
+  const sideA = sideC * Math.sin(angle)
+  const sideB = Math.sqrt((sideC**2) - (sideA**2))
+  return {sideA, sideB}
 }
 
 function getTrajectory() {
-  moveY = slide.clientWidth / 2;
-  moveX = getX(moveY, angle)
+  power = slide.clientWidth / 2;
+  let XY = getXY(power, angle)
+  moveY = XY.sideB
+  moveX = Math.abs(XY.sideA)
   return {y: moveY, x: moveX}
 }
 
