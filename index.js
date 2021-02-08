@@ -38,7 +38,8 @@ let angle = 0
 let direction = "right"
 
 function rotatePlane() {
-  ctx.fillRect(target.x, target.y, target.w, target.h)  
+  drawTarget()
+  
   ctx.translate(x, y);
   ctx.rotate(angle);
   ctx.fillStyle = 'red';
@@ -83,7 +84,7 @@ function movePlane() {
 function forwardPlane() {
   
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-  ctx.fillRect(target.x, target.y, target.w, target.h)  
+  drawTarget()
   ctx.save();
   ctx.translate(x, y);
   ctx.rotate(angle);
@@ -132,4 +133,13 @@ function sliderLoop(direction) {
 
 function getTarget() {
   return {x: 400, y:400, w: 100, h: 100}
+}
+
+function drawTarget() {
+  ctx.fillStyle = "gray"
+  ctx.fillRect(target.x, target.y, target.w, target.h)
+
+
+  ctx.fillStyle = "blue"
+  ctx.fillRect(target.x + target.w/2/2, target.y + target.h/2/2, target.w/2, target.h/2)
 }
