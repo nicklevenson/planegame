@@ -80,7 +80,7 @@ function movePlane() {
   // x = dx
   // y = dy
   // moveAnglePlane()
-  setInterval(forwardPlane, 10)
+  setInterval(forwardPlane, 1)
 }
 
 function forwardPlane() {
@@ -91,11 +91,11 @@ function forwardPlane() {
   ctx.fillStyle = 'red';
   ctx.fillRect(0, 0, 5, 20);
   if (angle >= 0) {
-    if (x > dx) {
-      x = x - (dx/dy)
+    if (x > dx || y < dy) {
+      x -= ((400 - dx)/500)
     }
     if (y < dy) {
-      y = y + (dy/dx)
+      y += (( dy-30)/500)
     }
   }else{
     if (x < dx) {
@@ -106,6 +106,7 @@ function forwardPlane() {
     }
   } 
   ctx.restore();
+  
 }
 
 
