@@ -23,7 +23,7 @@ function startSlide() {
     if (e.code === "Space") {
       clearTimeout(doSlide)
       movePlane() 
-      
+      moveAnglePlane()
     }
   })
 }
@@ -73,25 +73,16 @@ function anglePlane(angle, direction) {
 function movePlane() {
   let XY = getTrajectory()
   if (angle >= 0) {
-    x -= XY.x
-    y += XY.y
+    x = x - XY.x
+    y = y + XY.y
   }else{
-    x += XY.x
-    y += XY.y
+    x = x + XY.x
+    y = y + XY.y
   }
-  direction = "forward"
-
-    ctx.translate(x, y);
-    ctx.rotate(angle);
-  
-    ctx.fillStyle = 'red';
-    ctx.beginPath();
-    ctx.fillRect(0, 0, 20, 50);
-    ctx.closePath()
-   
-
   
 }
+
+
 
 
 
