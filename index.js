@@ -10,9 +10,13 @@ const targetInfo = getTarget()
 const target = targetInfo.target
 const target2 = targetInfo.target2 
 const target3 = targetInfo.target3
-let windY = .5
-let windX = .5
-let gravity = 500
+
+//negative wind is a n || e. positive wind is s || w 
+let windY = -1
+let windX = 1
+let windDirection = getWindDirection()
+let windAngle = getWindAngle()
+
 let power = 0
 
 startAngle()
@@ -49,7 +53,7 @@ let direction = "right"
 
 function rotatePlane() {
   drawTarget()
-  
+  drawWind()
   ctx.translate(x, y);
   ctx.rotate(angle);
   ctx.fillStyle = 'red';
@@ -96,6 +100,7 @@ function forwardPlane() {
   // angle += wind
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   drawTarget()
+  drawWind()
   ctx.save();
   ctx.translate(x, y);
   ctx.rotate(angle);
@@ -174,6 +179,7 @@ function drawTarget() {
   //draw Target3
   ctx.fillStyle = "gold"
   ctx.fillRect(target3.x, target3.y, target3.w, target3.h)
+
 }
 
 function collision() {
@@ -204,11 +210,34 @@ function collision() {
   
 }
 
-
 function getXYAdjust() {
- 
   let a = 50 * Math.sin(angle)
   let b = Math.sqrt((50**2) - (a**2))
   return {x: Math.abs(a), y: b}
 }
 
+function drawWind() {
+  ctx.save()
+  ctx.translate(750, 100)
+  ctx.fillStyle = "black"
+  ctx.rotate(windAngle)
+  ctx.fillRect(-5, -50, 10, 50)
+  ctx.restore();
+}
+
+function getWindDirection() {
+    //negative wind is n || e. positive wind is s || w 
+  if (windY < 0 && windX < 0) {return "NE"}
+  if (windY < 0 && windX > 0) {return "NW"}
+  if (windY > 0 && windX < 0) {return "SE"}
+  if (windY > 0 && windX > 0) {return "SW"}
+}
+
+function getWindAngle() {
+
+  if (windDirection = "NW") {return (Math.atan(windY / windX)) - 1.5}
+  if (windDirection = "NE") {return Math.atan(windX / windY)}
+  if (windDirection = "SW") {return Math.atan(windX / windY)}
+  if (windDirection = "SE") {return Math.atan(windX / windY)}
+
+}
