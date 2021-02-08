@@ -12,12 +12,13 @@ const target2 = targetInfo.target2
 const target3 = targetInfo.target3
 
 //negative wind is a n || e. positive wind is s || w 
-let windY = 0
-let windX = -3
+let windY = 1
+let windX = 1
 let windDirection = getWindDirection()
 let windAngle = getWindAngle()
 
 let power = 0
+let gravity = 500
 
 startAngle()
 
@@ -121,11 +122,11 @@ function forwardPlane() {
   }
   dy -= windY
   dx -= windX
-  if (power === 0) {
+  if (gravity === 0) {
     clearInterval(anglage)
     console.log(collision())
   }
-  power -= 1
+  gravity -= 1
 }
 
 function getXY(sideC, angle){
@@ -239,6 +240,17 @@ function getWindAngle() {
   if (windDirection === "NE") {return (Math.atan(windY / windX)) + 1.5}
   if (windDirection === "SW") {return (Math.atan(windY / windX)) -1.5}
   if (windDirection === "SE") {return (Math.atan(windY / windX)) + 1.5}
-  else {return -(Math.atan(windX / windY))}
+  else {
+    if (windY === 0 && windX >=0){
+      return -(Math.atan(windX / windY))
+    }else if (windY === 0 && windX < 0){
+      return -(Math.atan(windX / windY))
+    }else if (windX === 0 && windY >=0){
+      return -(Math.atan(windX / windY))
+    }else if (windX === 0 && windY < 0){
+      return 3.15
+    }
+  }
+  
 
 }
