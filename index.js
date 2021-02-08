@@ -12,8 +12,8 @@ const target2 = targetInfo.target2
 const target3 = targetInfo.target3
 
 //negative wind is a n || e. positive wind is s || w 
-let windY = -1
-let windX = 1
+let windY = 0
+let windX = -3
 let windDirection = getWindDirection()
 let windAngle = getWindAngle()
 
@@ -235,9 +235,10 @@ function getWindDirection() {
 
 function getWindAngle() {
 
-  if (windDirection = "NW") {return (Math.atan(windY / windX)) - 1.5}
-  if (windDirection = "NE") {return Math.atan(windX / windY)}
-  if (windDirection = "SW") {return Math.atan(windX / windY)}
-  if (windDirection = "SE") {return Math.atan(windX / windY)}
+  if (windDirection === "NW") {return (Math.atan(windY / windX)) - 1.5}
+  if (windDirection === "NE") {return (Math.atan(windY / windX)) + 1.5}
+  if (windDirection === "SW") {return (Math.atan(windY / windX)) -1.5}
+  if (windDirection === "SE") {return (Math.atan(windY / windX)) + 1.5}
+  else {return -(Math.atan(windX / windY))}
 
 }
