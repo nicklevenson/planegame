@@ -98,11 +98,11 @@ function forwardPlane() {
       y += (( dy-30)/500)
     }
   }else{
-    if (x < dx) {
-      x++
+    if (x < dx || y < dy) {
+      x += ((dx - 400)/500)
     }
     if (y < dy) {
-      y++
+      y += (( dy-30)/500)
     }
   } 
   ctx.restore();
