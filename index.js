@@ -36,7 +36,6 @@ let dy = 0;
 let angle = 0
 let direction = "right"
 
-
 function rotatePlane() {  
   ctx.translate(x, y);
   ctx.rotate(angle);
@@ -76,11 +75,7 @@ function movePlane() {
     dx = Math.round(x + XY.x)
     dy = Math.round(y + XY.y)
   }
-
-  // x = dx
-  // y = dy
-  // moveAnglePlane()
-  setInterval(forwardPlane, 1)
+  anglage = setInterval(forwardPlane, 1)
 }
 
 function forwardPlane() {
@@ -91,31 +86,19 @@ function forwardPlane() {
   ctx.fillStyle = 'red';
   ctx.fillRect(0, 0, 5, 20);
   if (angle >= 0) {
-    if (x > dx || y < dy) {
       x -= ((400 - dx)/500)
-    }
-    if (y < dy) {
       y += (( dy-30)/500)
-    }
   }else{
-    if (x < dx || y < dy) {
       x += ((dx - 400)/500)
-    }
-    if (y < dy) {
       y += (( dy-30)/500)
-    }
   } 
   ctx.restore();
-  
+  if (Math.round(x) === Math.round(dx) && Math.round(y) === Math.round(dy)) {
+    clearInterval(anglage)
+  }
 }
 
-
-
-
-
 function getXY(sideC, angle){
-  // const sideC = sideB / (Math.cos(angle))
-  // const sideA = Math.sqrt((sideC ** 2) - (sideB ** 2))
   const sideA = sideC * Math.sin(angle)
   const sideB = Math.sqrt((sideC**2) - (sideA**2))
   return {sideA, sideB}
@@ -132,18 +115,10 @@ function getTrajectory() {
  
 function slider(direction = "up") {
   const currentWidth = slide.clientWidth 
-  if (direction === "up"){
-    slide.style.width = currentWidth + 2 + "px"
-  } 
-  if (direction === "down") {
-    slide.style.width = currentWidth - 2 + "px"
-  }
-  if (currentWidth === 400){
-    direction = "down"
-  }
-  if (currentWidth === 0){
-    direction = "up"
-  }
+  if (direction === "up"){slide.style.width = currentWidth + 2 + "px"} 
+  if (direction === "down") {slide.style.width = currentWidth - 2 + "px"}
+  if (currentWidth === 400){direction = "down"}
+  if (currentWidth === 0){direction = "up"}
   sliderLoop(direction)
 }
 
