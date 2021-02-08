@@ -132,18 +132,21 @@ function sliderLoop(direction) {
 }
 
 function getTarget() {
-  return {x: 400, y:400, w: 100, h: 100}
+  //range x: 0 - 800; range y: 0 - 500
+  const randomX = Math.floor(Math.random() * 700)
+  const randomY = 100 + Math.floor(Math.random() * 300)
+  return {x: randomX, y:randomY, w: 100, h: 100}
 }
 
 function drawTarget() {
   const target2 = {x: target.x + target.w/2/2, y:target.y + target.h/2/2, w: target.w/2, h: target.h/2}
   const target3 = {x:target2.x + target2.w/2/1.5, y:target2.y + target2.h/2/1.5, w: target2.w/3, h: target2.h/3}
-  ctx.fillStyle = "gray"
+  ctx.fillStyle = "blue"
   ctx.fillRect(target.x, target.y, target.w, target.h)
 
-  ctx.fillStyle = "blue"
+  ctx.fillStyle = "salmon"
   ctx.fillRect(target2.x, target2.y, target2.w, target2.h)
  
-  ctx.fillStyle = "green"
+  ctx.fillStyle = "gold"
   ctx.fillRect(target3.x, target3.y, target3.w, target3.h)
 }
