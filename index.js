@@ -159,3 +159,35 @@ function drawTarget() {
   ctx.fillStyle = "gold"
   ctx.fillRect(target3.x, target3.y, target3.w, target3.h)
 }
+
+function collision() {
+  //boundsX = x >= tx && x < tx + tw
+  //boundsY = y >= ty && y < ty + th
+  let xAdjust = 0
+  let yAdjust = 0
+  if (angle >= 0) {
+    xAdjust -= getXYAdjust().x
+    yAdjust += getXYAdjust().y
+  }else{
+    xAdjust += getXYAdjust().x
+    yAdjust += getXYAdjust().y
+  } 
+  if ((x + xAdjust >= target3.x && x + xAdjust <= target3.x + target3.w)&&(y + yAdjust>= target3.y && y + yAdjust <= target3.y + target3.h)) {
+    return 3
+  }
+  if ((x + xAdjust >= target2.x && x + xAdjust <= target2.x + target2.w)&&(y + yAdjust >= target2.y && y + yAdjust<= target2.y + target2.h)) {
+    return 2
+  }
+  if ((x + xAdjust >= target.x && x + xAdjust <= target.x + target.w)&&(y + yAdjust >= target.y && y + yAdjust <= target.y + target.h)) {
+    return 1
+  }else{
+    return 0
+  }
+}
+
+
+function getXYAdjust() {
+  let a = 20 * Math.sin(angle)
+  let b = Math.sqrt((20**2) - (a**2))
+  return {x: Math.abs(a - 2.5), y: b}
+}
