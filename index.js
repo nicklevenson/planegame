@@ -137,13 +137,13 @@ function getTarget() {
 
 function drawTarget() {
   const target2 = {x: target.x + target.w/2/2, y:target.y + target.h/2/2, w: target.w/2, h: target.h/2}
-  const target3 = {x:target2.x + target2.w/2/2, y:target2.y + target2.h/2/2, w: target2.w/2, h: target2.h/2}
+  const target3 = {x:target2.x + target2.w/2/1.5, y:target2.y + target2.h/2/1.5, w: target2.w/3, h: target2.h/3}
   ctx.fillStyle = "gray"
   ctx.fillRect(target.x, target.y, target.w, target.h)
 
   ctx.fillStyle = "blue"
   ctx.fillRect(target2.x, target2.y, target2.w, target2.h)
-
+ 
   ctx.fillStyle = "green"
   ctx.fillRect(target3.x, target3.y, target3.w, target3.h)
 }
