@@ -1,5 +1,4 @@
 const slide = document.getElementById("slide")
-let doSlide
 
 let canvas = document.getElementById("myCanvas");
 let ctx = canvas.getContext("2d");
@@ -9,6 +8,9 @@ const targetInfo = getTarget()
 const target = targetInfo.target
 const target2 = targetInfo.target2
 const target3 = targetInfo.target3
+
+
+
 startAngle()
 
 function startAngle() {
@@ -85,7 +87,6 @@ function movePlane() {
 }
 
 function forwardPlane() {
-  
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   drawTarget()
   ctx.save();
@@ -113,10 +114,10 @@ function getXY(sideC, angle){
 }
 
 function getTrajectory() {
-  power = slide.clientWidth;
+  let power = slide.clientWidth + 150;
   let XY = getXY(power, angle)
-  moveY = XY.sideB
-  moveX = Math.abs(XY.sideA)
+  let moveY = XY.sideB
+  let moveX = Math.abs(XY.sideA)
   return {y: moveY, x: moveX}
 }
 
