@@ -22,13 +22,13 @@ function startSlide() {
   document.addEventListener('keyup', function(e){
     if (e.code === "Space") {
       clearTimeout(doSlide)
-      movePlane() 
-      moveAnglePlane()
+      movePlane()
+      
     }
   })
 }
 
-let x = 350;
+let x = 400;
 let y = 30;
 let dx = 0;
 let dy = 0;
@@ -40,18 +40,14 @@ let direction = "right"
 function rotatePlane() {  
   ctx.translate(x, y);
   ctx.rotate(angle);
-
   ctx.fillStyle = 'red';
-  ctx.beginPath();
   ctx.fillRect(0, 0, 5, 20);
-  ctx.closePath()
   if (angle >= 1) {
     direction = "left"
   }   
   if (angle <= -1) {
     direction = "right"
-  }
-  
+  } 
  angle = anglePlane(angle, direction)
 }
 
@@ -73,13 +69,43 @@ function anglePlane(angle, direction) {
 function movePlane() {
   let XY = getTrajectory()
   if (angle >= 0) {
-    x = x - XY.x
-    y = y + XY.y
+    dx = Math.round(x - XY.x)
+    dy = Math.round(y + XY.y)
+    
   }else{
-    x = x + XY.x
-    y = y + XY.y
+    dx = Math.round(x + XY.x)
+    dy = Math.round(y + XY.y)
   }
-  
+
+  // x = dx
+  // y = dy
+  // moveAnglePlane()
+  setInterval(forwardPlane, 10)
+}
+
+function forwardPlane() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.save();
+  ctx.translate(x, y);
+  ctx.rotate(angle);
+  ctx.fillStyle = 'red';
+  ctx.fillRect(0, 0, 5, 20);
+  if (angle >= 0) {
+    if (x > dx) {
+      x--
+    }
+    if (y < dy) {
+      y++
+    }
+  }else{
+    if (x < dx) {
+      x++
+    }
+    if (y < dy) {
+      y++
+    }
+  } 
+  ctx.restore();
 }
 
 
@@ -95,7 +121,7 @@ function getXY(sideC, angle){
 }
 
 function getTrajectory() {
-  power = slide.clientWidth / 2;
+  power = slide.clientWidth;
   let XY = getXY(power, angle)
   moveY = XY.sideB
   moveX = Math.abs(XY.sideA)
