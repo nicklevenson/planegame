@@ -5,13 +5,14 @@ let canvas = document.getElementById("myCanvas");
 let ctx = canvas.getContext("2d");
 ctx.transform(1, 0, 0, -1, 0, canvas.height)
 
+const target = getTarget()
 startAngle()
+
 function startAngle() {
   anglage = setInterval(moveAnglePlane, 50);
   document.addEventListener('keyup', function space(e){
     if (e.code === "Space") {
       clearInterval(anglage)
-      
       sliderLoop()
       startSlide()
       document.removeEventListener("keyup", space);
@@ -19,11 +20,11 @@ function startAngle() {
   })
 }
 function startSlide() {
-  document.addEventListener('keyup', function(e){
+  document.addEventListener('keyup', function space(e){
     if (e.code === "Space") {
       clearTimeout(doSlide)
-      movePlane()
-      
+      movePlane() 
+      document.removeEventListener("keyup", space);
     }
   })
 }
@@ -36,7 +37,8 @@ let dy = 0;
 let angle = 0
 let direction = "right"
 
-function rotatePlane() {  
+function rotatePlane() {
+  ctx.fillRect(target.x, target.y, target.w, target.h)  
   ctx.translate(x, y);
   ctx.rotate(angle);
   ctx.fillStyle = 'red';
@@ -79,7 +81,9 @@ function movePlane() {
 }
 
 function forwardPlane() {
+  
   ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.fillRect(target.x, target.y, target.w, target.h)  
   ctx.save();
   ctx.translate(x, y);
   ctx.rotate(angle);
@@ -126,3 +130,6 @@ function sliderLoop(direction) {
   doSlide = setTimeout(function() {slider(direction)}, 1)
 }
 
+function getTarget() {
+  return {x: 400, y:400, w: 100, h: 100}
+}
