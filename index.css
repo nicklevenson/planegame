@@ -1,25 +1,20 @@
-#game {
+/* #game {
   
   position: relative;
   width: 800;
   height: 500;
 
 
-}
+} */
 canvas {
-
   background-image:url(grass.jpg);
   background-size: 200px;
-
 }
 
 #speedSlider {
-  display: inline-block;
+  height: 50px;
   
   background-color: black;
-  height: 50px;
-  width: 400px;
-  
 }
 
 #slide {

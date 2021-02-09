@@ -1,17 +1,20 @@
-
-
+const slideContainer = document.getElementById("speedSlider")
 const slide = document.getElementById("slide")
 const score = document.getElementById("score")
 let canvas = document.getElementById("myCanvas");
 
 canvas.width = window.innerWidth * 2/3
-canvas.height = window.innerHeight * 2/3
+canvas.height = canvas.width * 2/3
 
 let planeW = canvas.width * .05;
 let planeH = planeW * 1.25;
 
-let targetW;
-let targetH;
+let targetW = canvas.width * .125;
+let targetH = targetW;
+
+slideContainer.style.width = (canvas.width/2) + "px"
+let slideW = slideContainer.offsetWidth
+
 
 
 
@@ -61,7 +64,7 @@ function startSlide() {
   })
 }
 
-let x = 400;
+let x = canvas.width/2;
 let y = 30;
 let dx = 0;
 let dy = 0;
@@ -77,7 +80,7 @@ function rotatePlane() {
   ctx.rotate(angle);
   ctx.fillStyle = 'red';
   // ctx.fillRect(0, 0, 5, 20);
-  ctx.drawImage(img,-20,0,40,50)
+  ctx.drawImage(img,-(planeW/2),0,planeW,planeH)
   if (angle >= 1) {
     direction = "left"
   }   
@@ -128,14 +131,14 @@ function forwardPlane() {
   ctx.rotate(angle);
   ctx.fillStyle = 'red';
   // ctx.fillRect(0, 0, 5, 20);
-  ctx.drawImage(img,-20,0,40,50)
+  ctx.drawImage(img,-(planeW/2),0,planeW,planeH)
   if (angle >= 0) {
-      x -= ((400 - dx)/500) 
-      y += (( dy-30)/500)
+      x -= (((canvas.width/2) - dx)/canvas.height) 
+      y += (( dy-30)/canvas.height)
 
   }else{
-      x += ((dx - 400)/500)
-      y += (( dy-30)/500)
+      x += ((dx - (canvas.width/2))/canvas.height)
+      y += (( dy-30)/canvas.height)
   
   } 
   ctx.restore();
@@ -171,7 +174,7 @@ function slider(direction = "up") {
   const currentWidth = slide.clientWidth 
   if (direction === "up"){slide.style.width = currentWidth + 2 + "px"} 
   if (direction === "down") {slide.style.width = currentWidth - 2 + "px"}
-  if (currentWidth === 400){direction = "down"}
+  if (currentWidth >= slideW){direction = "down"}
   if (currentWidth === 0){direction = "up"}
   sliderLoop(direction)
 }
@@ -182,9 +185,9 @@ function sliderLoop(direction) {
 
 function getTarget() {
   //range x: 0 - 800; range y: 0 - 500
-  const randomX = Math.floor(Math.random() * 500)+ 100
-  const randomY = 100 + Math.floor(Math.random() * 200)+ 100
-  const target = {x: randomX, y:randomY, w: 100, h: 100}
+  const randomX = Math.floor(Math.random() * (canvas.width/2))+ (targetW)
+  const randomY = 100 + Math.floor(Math.random() * (canvas.height/2) - targetH)
+  const target = {x: randomX, y:randomY, w: targetW, h: targetH}
   const target2 = {x: target.x + target.w/2/2, y:target.y + target.h/2/2, w: target.w/2, h: target.h/2}
   const target3 = {x:target2.x + target2.w/2/1.5, y:target2.y + target2.h/2/1.5, w: target2.w/3, h: target2.h/3}
   return {target, target2, target3}
@@ -231,8 +234,8 @@ function collision() {
 }
 
 function getXYAdjust() {
-  let a = 50 * Math.sin(angle)
-  let b = Math.sqrt((50**2) - (a**2))
+  let a = planeH * Math.sin(angle)
+  let b = Math.sqrt((planeH**2) - (a**2))
   return {x: Math.abs(a), y: b}
 }
 
