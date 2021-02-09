@@ -272,7 +272,7 @@ function drawWind() {
 function drawWindPower() {
   ctx.save()
   ctx.transform(1, 0, 0, -1, 0, canvas.height)
-  ctx.translate(740, 490)
+  ctx.translate(canvas.width*.85, canvas.height*.99)
   ctx.font = "15px Arial";
   ctx.fillText(`${windPower} Mph`, -15, 0);
   ctx.restore();
@@ -293,11 +293,11 @@ function getWindAngle() {
   if (windDirection === "SE") {return (Math.atan(windY / windX)) + 1.5}
   else {
     if (windY === 0 && windX >=0){
-      return -(Math.atan(windX / windY))
+      return -1.5
     }else if (windY === 0 && windX < 0){
-      return -(Math.atan(windX / windY))
+      return 1.5
     }else if (windX === 0 && windY >=0){
-      return -(Math.atan(windX / windY))
+      return 0
     }else if (windX === 0 && windY < 0){
       return 3.15
     }
