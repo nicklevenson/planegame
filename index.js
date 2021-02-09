@@ -18,7 +18,7 @@ let windX = getWind().x
 let windDirection = getWindDirection()
 let windAngle = getWindAngle()
 // let windPower = (((Math.abs(windY) * Math.abs(windX))+1)* 10).toPrecision(3)
-let windPower = ((Math.sqrt((Math.abs((windX*10)**2)) + (Math.abs((windY*10)**2))) ) ).toPrecision(3)
+let windPower = ((Math.sqrt((Math.abs((windX*100)**2)) + (Math.abs((windY*100)**2))))).toPrecision(3)
 console.log(windX, windY)
 let power = 0
 let gravity = 500
@@ -226,14 +226,14 @@ function getWind() {
   let randomX;
   let randomY;
   if (xNeg === 0){
-    randomX = -(parseFloat(Math.random().toPrecision(1) ))
+    randomX = -(parseFloat(Math.random().toPrecision(1) )-.3)
   }else{
-    randomX = (parseFloat(Math.random().toPrecision(1) ))
+    randomX = (parseFloat(Math.random().toPrecision(1) )-.3)
   }
   if (yNeg === 0){
-    randomY = (parseFloat(Math.random().toPrecision(1) ))
+    randomY = (parseFloat(Math.random().toPrecision(1)) -.3)
   }else{
-    randomY = -(parseFloat(Math.random().toPrecision(1)))
+    randomY = -(parseFloat(Math.random().toPrecision(1))-.3)
   }
   return {x: randomX, y: randomY}
 }
