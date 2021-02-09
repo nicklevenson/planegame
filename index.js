@@ -112,9 +112,11 @@ function forwardPlane() {
   if (angle >= 0) {
       x -= ((400 - dx)/500) 
       y += (( dy-30)/500)
+
   }else{
       x += ((dx - 400)/500)
       y += (( dy-30)/500)
+  
   } 
   ctx.restore();
   
@@ -126,6 +128,7 @@ function forwardPlane() {
    
   }
   gravity -= 1
+  
 }
 
 function getXY(sideC, angle){
@@ -159,7 +162,7 @@ function sliderLoop(direction) {
 
 function getTarget() {
   //range x: 0 - 800; range y: 0 - 500
-  const randomX = Math.floor(Math.random() * 700)
+  const randomX = Math.floor(Math.random() * 600)
   const randomY = 100 + Math.floor(Math.random() * 300)
   const target = {x: randomX, y:randomY, w: 100, h: 100}
   const target2 = {x: target.x + target.w/2/2, y:target.y + target.h/2/2, w: target.w/2, h: target.h/2}
