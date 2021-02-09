@@ -18,9 +18,10 @@ let windX = getWind().x
 let windDirection = getWindDirection()
 let windAngle = getWindAngle()
 // let windPower = (((Math.abs(windY) * Math.abs(windX))+1)* 10).toPrecision(3)
-let windPower = ((Math.sqrt((windX**2) + (windY**2)) + 1) * 10).toPrecision(3)
+let windPower = ((Math.sqrt((Math.abs((windX*10)**2)) + (Math.abs((windY*10)**2))) ) ).toPrecision(3)
+console.log(windX, windY)
 let power = 0
-let gravity = 0
+let gravity = 500
 startRound()
 
 function startRound() {
@@ -95,7 +96,7 @@ function movePlane() {
     dx = Math.round(x + XY.x)
     dy = Math.round(y + XY.y)
   }
-  gravity = Math.round(((Math.sqrt((XY.x**2) + (XY.y**2)))))+100
+  // gravity = Math.round(((Math.sqrt((XY.x**2) + (XY.y**2)))))+100
   console.log(gravity)
   anglage = setInterval(forwardPlane, 1)
 }

@@ -3,13 +3,13 @@
   position: relative;
   width: 800;
   height: 500;
-  background-image:url(grass.jpg);
-  background-size: cover;
+
 
 }
 canvas {
-  display: block;
-  background-color: transparent;
+  background-image:url(grass.jpg);
+  background-size: 200px;
+
 }
 
 #speedSlider {
