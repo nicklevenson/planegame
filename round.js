@@ -52,22 +52,24 @@ function newRound(){
   startRound()
 
   function startRound() {
+    control.innerText = "Choose Angle"
     anglage = setInterval(moveAnglePlane, 50);
-    document.addEventListener('click', function space(e){
-      
+    control.addEventListener('click', function space(e){
+        control.innerText = "Choose Power and Fly"
+        
         clearInterval(anglage)
         sliderLoop()
         startSlide()
-        document.removeEventListener("click", space);
+        control.removeEventListener("click", space);
       
     })
   }
   function startSlide() {
-    document.addEventListener('click', function space(e){
+    control.addEventListener('click', function space(e){
       
         clearTimeout(doSlide)
         movePlane() 
-        document.removeEventListener("click", space);
+        control.removeEventListener("click", space);
         
       
     })

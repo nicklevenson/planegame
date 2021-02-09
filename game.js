@@ -1,6 +1,7 @@
 window.addEventListener('load', e=>{newGame()})
 const score = document.getElementById("score")
 const roundTag = document.getElementById("round")
+const control = document.getElementById("control")
 let round = 1;
 let tally = 0;
 function newGame() {
@@ -16,10 +17,12 @@ function newGame() {
 }
 
 function addScore(s) {
+  control.innerText = "Next Round"
   tally += s
   score.innerText = `Score: ${tally}`
-  document.addEventListener('click', function restart(){
+  control.addEventListener('click', function restart(){
+    
     newGame()
-    document.removeEventListener('click',restart)
+    control.removeEventListener('click',restart)
   })
 }
