@@ -166,8 +166,8 @@ function sliderLoop(direction) {
 
 function getTarget() {
   //range x: 0 - 800; range y: 0 - 500
-  const randomX = Math.floor(Math.random() * 600)
-  const randomY = 100 + Math.floor(Math.random() * 300)
+  const randomX = Math.floor(Math.random() * 500)+ 100
+  const randomY = 100 + Math.floor(Math.random() * 200)+ 100
   const target = {x: randomX, y:randomY, w: 100, h: 100}
   const target2 = {x: target.x + target.w/2/2, y:target.y + target.h/2/2, w: target.w/2, h: target.h/2}
   const target3 = {x:target2.x + target2.w/2/1.5, y:target2.y + target2.h/2/1.5, w: target2.w/3, h: target2.h/3}
