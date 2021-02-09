@@ -1,12 +1,11 @@
 function newRound(){
   const slideContainer = document.getElementById("speedSlider")
   const slide = document.getElementById("slide")
-  const score = document.getElementById("score")
   let canvas = document.getElementById("myCanvas");
 
 
   //sizing
-  canvas.height = document.body.offsetHeight * .75
+  canvas.height = (document.body.offsetHeight * .75) - 50
   canvas.width = document.body.offsetWidth * .75
 
   let planeW = canvas.height * .05;
@@ -29,10 +28,7 @@ function newRound(){
   const windImg = document.getElementById("wind")
 
   //calibration
-  const targetInfo = getTarget()
-  const target = targetInfo.target
-  const target2 = targetInfo.target2 
-  const target3 = targetInfo.target3
+  
 
   //negative wind is a n || e. positive wind is s || w 
   let windY = getWind().y
@@ -47,27 +43,33 @@ function newRound(){
   let power = 0
   let gravity = canvas.height
 
+  const targetInfo = getTarget()
+  const target = targetInfo.target
+  const target2 = targetInfo.target2 
+  const target3 = targetInfo.target3
+
   //start a round
   startRound()
 
   function startRound() {
     anglage = setInterval(moveAnglePlane, 50);
-    document.addEventListener('keyup', function space(e){
-      if (e.code === "Space") {
+    document.addEventListener('click', function space(e){
+      
         clearInterval(anglage)
         sliderLoop()
         startSlide()
-        document.removeEventListener("keyup", space);
-      }
+        document.removeEventListener("click", space);
+      
     })
   }
   function startSlide() {
-    document.addEventListener('keyup', function space(e){
-      if (e.code === "Space") {
+    document.addEventListener('click', function space(e){
+      
         clearTimeout(doSlide)
         movePlane() 
-        document.removeEventListener("keyup", space); 
-      }
+        document.removeEventListener("click", space);
+        
+      
     })
   }
 
@@ -123,7 +125,6 @@ function newRound(){
       dy = Math.round(y + XY.y)
     }
     // gravity = Math.round(((Math.sqrt((XY.x**2) + (XY.y**2)))))+100
-    console.log(gravity)
     anglage = setInterval(forwardPlane, 1)
   }
 
@@ -155,10 +156,11 @@ function newRound(){
     if (gravity <= 0) {
       clearInterval(anglage)
       console.log(collision())
-      return collision()
+      ctx.restore()
+      slide.style.height = 0
+      addScore(collision())
     }
     gravity -= 1
-    
   }
 
   function getXY(sideC, angle){
@@ -191,8 +193,14 @@ function newRound(){
 
   function getTarget() {
     //range x: 0 - 800; range y: 0 - 500
+    let randomY;
     const randomX = Math.floor(Math.random() * (canvas.width/2))+ (targetW)
-    const randomY = Math.floor(Math.random() * (canvas.height - (targetH*2))) + targetH
+    if (windDirection === "SE" || windDirection === "SW"){
+      randomY = Math.floor(Math.random() * (canvas.height/2)) + targetH
+    }else{
+      randomY = Math.floor(Math.random() * (canvas.height - (targetH*2))) + targetH
+    }
+    
     const target = {x: randomX, y:randomY, w: targetW, h: targetH}
     const target2 = {x: target.x + target.w/2/2, y:target.y + target.h/2/2, w: target.w/2, h: target.h/2}
     const target3 = {x:target2.x + target2.w/2/1.5, y:target2.y + target2.h/2/1.5, w: target2.w/3, h: target2.h/3}
