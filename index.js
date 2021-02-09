@@ -3,8 +3,8 @@ const slide = document.getElementById("slide")
 const score = document.getElementById("score")
 let canvas = document.getElementById("myCanvas");
 
-canvas.height = document.body.offsetHeight* 2/3
-canvas.width= canvas.height * 2/3
+canvas.width = document.body.offsetWidth - 100
+canvas.height= document.body.offsetHeight * 3/4
 
 let planeW = canvas.width * .05;
 let planeH = planeW * 1.25;
@@ -15,8 +15,8 @@ let targetH = targetW;
 slideContainer.style.height = (canvas.height) + "px"
 let slideH = slideContainer.offsetHeight
 
-let windW = canvas.width*.1
-let windH = windW*2
+let windW = 50
+let windH = 100
 
 
 let ctx = canvas.getContext("2d");
@@ -188,7 +188,7 @@ function sliderLoop(direction) {
 function getTarget() {
   //range x: 0 - 800; range y: 0 - 500
   const randomX = Math.floor(Math.random() * (canvas.width/2))+ (targetW)
-  const randomY = (targetH*1.5) + Math.floor(Math.random() * (canvas.height/2))
+  const randomY = Math.floor(Math.random() * (canvas.height - (targetH*2))) + targetH
   const target = {x: randomX, y:randomY, w: targetW, h: targetH}
   const target2 = {x: target.x + target.w/2/2, y:target.y + target.h/2/2, w: target.w/2, h: target.h/2}
   const target3 = {x:target2.x + target2.w/2/1.5, y:target2.y + target2.h/2/1.5, w: target2.w/3, h: target2.h/3}
@@ -272,7 +272,7 @@ function drawWind() {
 function drawWindPower() {
   ctx.save()
   ctx.transform(1, 0, 0, -1, 0, canvas.height)
-  ctx.translate(canvas.width*.85, canvas.height*.99)
+  ctx.translate(canvas.width*.9, canvas.height*.99)
   ctx.font = "15px Arial";
   ctx.fillText(`${windPower} Mph`, -15, 0);
   ctx.restore();
