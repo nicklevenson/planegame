@@ -1,5 +1,5 @@
 const slide = document.getElementById("slide")
-
+const score = document.getElementById("score")
 let canvas = document.getElementById("myCanvas");
 let ctx = canvas.getContext("2d");
 ctx.transform(1, 0, 0, -1, 0, canvas.height)
@@ -17,7 +17,8 @@ let windY = getWind().y
 let windX = getWind().x
 let windDirection = getWindDirection()
 let windAngle = getWindAngle()
-let windPower = (((Math.abs(windY) * Math.abs(windX))+1)* 10).toPrecision(3)
+// let windPower = (((Math.abs(windY) * Math.abs(windX))+1)* 10).toPrecision(3)
+let windPower = ((Math.sqrt((windX**2) + (windY**2)) + 1) * 100).toPrecision(3)
 let power = 0
 let gravity = 0
 startRound()
@@ -94,6 +95,7 @@ function movePlane() {
     dx = Math.round(x + XY.x)
     dy = Math.round(y + XY.y)
   }
+  gravity = Math.round(((Math.sqrt((dx**2) + (dy**2)) + 1)))
   anglage = setInterval(forwardPlane, 1)
 }
 
@@ -125,7 +127,7 @@ function forwardPlane() {
   if (gravity <= 0) {
     clearInterval(anglage)
     console.log(collision())
-   
+    score.innerHTML += collision()
   }
   gravity -= 1
   
@@ -139,7 +141,7 @@ function getXY(sideC, angle){
 
 function getTrajectory() {
   power = slide.clientWidth + 150;
-  gravity = power * parseInt(windPower) / 10
+ 
   let XY = getXY(power, angle)
   let moveY = XY.sideB
   let moveX = Math.abs(XY.sideA)
@@ -229,7 +231,7 @@ function getWind() {
   if (yNeg === 0){
     randomY = (parseFloat(Math.random().toPrecision(1) ))
   }else{
-    randomY = -(parseFloat(Math.random().toPrecision(1) ))
+    randomY = -(parseFloat(Math.random().toPrecision(1)))
   }
   return {x: randomX, y: randomY}
 }

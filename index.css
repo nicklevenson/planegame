@@ -5,12 +5,13 @@
   height: 500;
 }
 canvas {
-  
+  display: block;
   background-color: lightblue;
 }
 
 #speedSlider {
-  position: absolute;
+  display: inline-block;
+  
   background-color: black;
   height: 50px;
   width: 400px;
@@ -31,4 +32,9 @@ canvas {
 #wind{
   height: 1px;
   width: 1px;
+}
+
+#score h1{
+  display: inline-block;
+  margin: 0;
 }
