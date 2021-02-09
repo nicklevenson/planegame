@@ -3,10 +3,13 @@
   position: relative;
   width: 800;
   height: 500;
+  background-image:url(grass.jpg);
+  background-size: cover;
+
 }
 canvas {
   display: block;
-  background-color: lightblue;
+  background-color: transparent;
 }
 
 #speedSlider {
@@ -22,6 +25,7 @@ canvas {
   background-color: red;
   height: 50px;
   width: 0px;
+  opacity: .5;
 }
 
 #plane {
