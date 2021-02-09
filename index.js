@@ -1,11 +1,27 @@
+
+
 const slide = document.getElementById("slide")
 const score = document.getElementById("score")
 let canvas = document.getElementById("myCanvas");
+
+canvas.width = window.innerWidth * 2/3
+canvas.height = window.innerHeight * 2/3
+
+let planeW = canvas.width * .05;
+let planeH = planeW * 1.25;
+
+let targetW;
+let targetH;
+
+
+
 let ctx = canvas.getContext("2d");
 ctx.transform(1, 0, 0, -1, 0, canvas.height)
 
 const img = document.getElementById("plane")
 const windImg = document.getElementById("wind")
+
+
 
 const targetInfo = getTarget()
 const target = targetInfo.target
