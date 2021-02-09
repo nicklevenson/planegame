@@ -19,9 +19,9 @@ let windDirection = getWindDirection()
 let windAngle = getWindAngle()
 // let windPower = (((Math.abs(windY) * Math.abs(windX))+1)* 10).toPrecision(3)
 let windPower = ((Math.sqrt((Math.abs((windX*100)**2)) + (Math.abs((windY*100)**2))))).toPrecision(3)
-console.log(windX, windY)
+
 let power = 0
-let gravity = 500
+let gravity = 600
 startRound()
 
 function startRound() {
@@ -142,7 +142,7 @@ function getXY(sideC, angle){
 }
 
 function getTrajectory() {
-  power = slide.clientWidth + 150;
+  power = slide.clientWidth + 50;
  
   let XY = getXY(power, angle)
   let moveY = XY.sideB
