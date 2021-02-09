@@ -3,13 +3,13 @@ const slide = document.getElementById("slide")
 const score = document.getElementById("score")
 let canvas = document.getElementById("myCanvas");
 
-canvas.width = document.body.offsetWidth - 100
-canvas.height= document.body.offsetHeight * 3/4
+canvas.height = document.body.offsetHeight * .75
+canvas.width = document.body.offsetWidth * .75
 
-let planeW = canvas.width * .05;
+let planeW = canvas.height * .05;
 let planeH = planeW * 1.25;
 
-let targetW = canvas.width * .125;
+let targetW = canvas.height * .125;
 let targetH = targetW;
 
 slideContainer.style.height = (canvas.height) + "px"
@@ -261,7 +261,7 @@ function getWind() {
 
 function drawWind() {
   ctx.save()
-  ctx.translate(canvas.width*.9, canvas.height*.1)
+  ctx.translate(canvas.width-50, canvas.height*.1)
   ctx.fillStyle = "black"
   ctx.rotate(windAngle + Math.random()/10)
   // ctx.fillRect(-5, -50, 10, 50)
@@ -272,7 +272,7 @@ function drawWind() {
 function drawWindPower() {
   ctx.save()
   ctx.transform(1, 0, 0, -1, 0, canvas.height)
-  ctx.translate(canvas.width*.9, canvas.height*.99)
+  ctx.translate(canvas.width-50, canvas.height*.99)
   ctx.font = "15px Arial";
   ctx.fillText(`${windPower} Mph`, -15, 0);
   ctx.restore();
