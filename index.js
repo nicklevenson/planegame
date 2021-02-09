@@ -17,10 +17,9 @@ let windY = getWind().y
 let windX = getWind().x
 let windDirection = getWindDirection()
 let windAngle = getWindAngle()
-let windPower = (windY + windX) * 100 + " MPH"
+let windPower = Math.round((Math.abs(windY) * Math.abs(windX)) * 100).toPrecision(3)
 let power = 0
 let gravity = 500
-
 startAngle()
 
 function startAngle() {
@@ -39,8 +38,7 @@ function startSlide() {
     if (e.code === "Space") {
       clearTimeout(doSlide)
       movePlane() 
-      document.removeEventListener("keyup", space);
-      
+      document.removeEventListener("keyup", space); 
     }
   })
 }
@@ -56,6 +54,7 @@ let direction = "right"
 function rotatePlane() {
   drawTarget()
   drawWind()
+  drawWindPower()
   ctx.translate(x, y);
   ctx.rotate(angle);
   ctx.fillStyle = 'red';
@@ -103,6 +102,7 @@ function forwardPlane() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   drawTarget()
   drawWind()
+  drawWindPower()
   ctx.save();
   ctx.translate(x, y);
   ctx.rotate(angle);
@@ -120,7 +120,7 @@ function forwardPlane() {
   
   dy -= windY
   dx -= windX
-  if (gravity === 0) {
+  if (gravity <= 0) {
     clearInterval(anglage)
     console.log(collision())
   }
@@ -135,6 +135,7 @@ function getXY(sideC, angle){
 
 function getTrajectory() {
   power = slide.clientWidth + 150;
+ 
   let XY = getXY(power, angle)
   let moveY = XY.sideB
   let moveX = Math.abs(XY.sideA)
@@ -235,11 +236,20 @@ function getWind() {
 
 function drawWind() {
   ctx.save()
-  ctx.translate(750, 50)
+  ctx.translate(750, 75)
   ctx.fillStyle = "black"
   ctx.rotate(windAngle)
   // ctx.fillRect(-5, -50, 10, 50)
   ctx.drawImage(windImg,-25,-50,50,100)
+  ctx.restore();
+}
+
+function drawWindPower() {
+  ctx.save()
+  ctx.transform(1, 0, 0, -1, 0, canvas.height)
+  ctx.translate(740, 490)
+  ctx.font = "15px Arial";
+  ctx.fillText(`${windPower} Mph`, -15, 0);
   ctx.restore();
 }
 
