@@ -1,27 +1,28 @@
-/* #game {
-  
-  position: relative;
-  width: 800;
-  height: 500;
-
-
-} */
+body {
+  width: 100%;
+  height: 100vh;
+  margin: 0;
+}
 canvas {
   background-image:url(grass.jpg);
   background-size: 200px;
+  display: inline-block;
 }
 
 #speedSlider {
-  height: 50px;
-  
+  display: inline-block;
+  width: 50px;
   background-color: black;
+  position: relative;
 }
 
 #slide {
   background-color: red;
-  height: 50px;
-  width: 0px;
+  width: 50px;
+  height: 0px;
   opacity: .5;
+  position: absolute;
+  bottom: 0;
 }
 
 #plane {
