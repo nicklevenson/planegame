@@ -198,7 +198,7 @@ function newRound(){
     if (windDirection === "SE" || windDirection === "SW"){
       randomY = Math.floor(Math.random() * (canvas.height/2)) + targetH
     }else{
-      randomY = Math.floor(Math.random() * (canvas.height - (targetH*2))) + targetH
+      randomY = Math.floor(Math.random() * (canvas.height - (targetH*3))) + targetH*2
     }
     
     const target = {x: randomX, y:randomY, w: targetW, h: targetH}
