@@ -5,6 +5,7 @@ let ctx = canvas.getContext("2d");
 ctx.transform(1, 0, 0, -1, 0, canvas.height)
 
 const img = document.getElementById("plane")
+const windImg = document.getElementById("wind")
 
 const targetInfo = getTarget()
 const target = targetInfo.target
@@ -12,11 +13,11 @@ const target2 = targetInfo.target2
 const target3 = targetInfo.target3
 
 //negative wind is a n || e. positive wind is s || w 
-let windY = 1
-let windX = 1
+let windY = getWind().y
+let windX = getWind().x
 let windDirection = getWindDirection()
 let windAngle = getWindAngle()
-
+let windPower = (windY + windX) * 100 + " MPH"
 let power = 0
 let gravity = 500
 
@@ -116,10 +117,7 @@ function forwardPlane() {
       y += (( dy-30)/500)
   } 
   ctx.restore();
-  if (Math.round(x) === Math.round(dx) && Math.round(y) === Math.round(dy)) {
-    clearInterval(anglage)
-    console.log(collision())
-  }
+  
   dy -= windY
   dx -= windX
   if (gravity === 0) {
@@ -217,12 +215,31 @@ function getXYAdjust() {
   return {x: Math.abs(a), y: b}
 }
 
+function getWind() {
+  let xNeg = Math.floor(Math.random() * 2)
+  let yNeg = Math.floor(Math.random() * 2)
+  let randomX;
+  let randomY;
+  if (xNeg === 0){
+    randomX = -(parseFloat(Math.random().toPrecision(1)))
+  }else{
+    randomX = (parseFloat(Math.random().toPrecision(1)))
+  }
+  if (yNeg === 0){
+    randomY = (parseFloat(Math.random().toPrecision(1)))
+  }else{
+    randomY = -(parseFloat(Math.random().toPrecision(1)))
+  }
+  return {x: randomX, y: randomY}
+}
+
 function drawWind() {
   ctx.save()
-  ctx.translate(750, 100)
+  ctx.translate(750, 50)
   ctx.fillStyle = "black"
   ctx.rotate(windAngle)
-  ctx.fillRect(-5, -50, 10, 50)
+  // ctx.fillRect(-5, -50, 10, 50)
+  ctx.drawImage(windImg,-25,-50,50,100)
   ctx.restore();
 }
 
@@ -235,7 +252,6 @@ function getWindDirection() {
 }
 
 function getWindAngle() {
-
   if (windDirection === "NW") {return (Math.atan(windY / windX)) - 1.5}
   if (windDirection === "NE") {return (Math.atan(windY / windX)) + 1.5}
   if (windDirection === "SW") {return (Math.atan(windY / windX)) -1.5}
@@ -251,6 +267,4 @@ function getWindAngle() {
       return 3.15
     }
   }
-  
-
 }
