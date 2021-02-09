@@ -15,7 +15,8 @@ let targetH = targetW;
 slideContainer.style.height = (canvas.height) + "px"
 let slideH = slideContainer.offsetHeight
 
-
+let windW = canvas.width*.1
+let windH = windW*2
 
 
 let ctx = canvas.getContext("2d");
@@ -34,13 +35,15 @@ const target3 = targetInfo.target3
 //negative wind is a n || e. positive wind is s || w 
 let windY = getWind().y
 let windX = getWind().x
+// let windY = 0
+// let windX = 0
 let windDirection = getWindDirection()
 let windAngle = getWindAngle()
 // let windPower = (((Math.abs(windY) * Math.abs(windX))+1)* 10).toPrecision(3)
 let windPower = ((Math.sqrt((Math.abs((windX*100)**2)) + (Math.abs((windY*100)**2))))).toPrecision(3)
 
 let power = 0
-let gravity = 600
+let gravity = canvas.height
 startRound()
 
 function startRound() {
@@ -161,8 +164,7 @@ function getXY(sideC, angle){
 }
 
 function getTrajectory() {
-  power = slide.clientWidth + 50;
- 
+  power = slide.clientHeight;
   let XY = getXY(power, angle)
   let moveY = XY.sideB
   let moveX = Math.abs(XY.sideA)
@@ -259,11 +261,11 @@ function getWind() {
 
 function drawWind() {
   ctx.save()
-  ctx.translate(750, 75)
+  ctx.translate(canvas.width*.9, canvas.height*.1)
   ctx.fillStyle = "black"
   ctx.rotate(windAngle + Math.random()/10)
   // ctx.fillRect(-5, -50, 10, 50)
-  ctx.drawImage(windImg,-25,-50,50,100)
+  ctx.drawImage(windImg,-(windW/2),-(windH/2),windW,windH)
   ctx.restore();
 }
 
