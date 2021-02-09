@@ -17,9 +17,9 @@ let windY = getWind().y
 let windX = getWind().x
 let windDirection = getWindDirection()
 let windAngle = getWindAngle()
-let windPower = Math.round((Math.abs(windY) * Math.abs(windX)) * 100).toPrecision(3)
+let windPower = (((Math.abs(windY) * Math.abs(windX))+1)* 10).toPrecision(3)
 let power = 0
-let gravity = 500
+let gravity = 0
 startRound()
 
 function startRound() {
@@ -136,7 +136,7 @@ function getXY(sideC, angle){
 
 function getTrajectory() {
   power = slide.clientWidth + 150;
- 
+  gravity = power - 150
   let XY = getXY(power, angle)
   let moveY = XY.sideB
   let moveX = Math.abs(XY.sideA)
@@ -223,14 +223,14 @@ function getWind() {
   let randomX;
   let randomY;
   if (xNeg === 0){
-    randomX = -(parseFloat(Math.random().toPrecision(1)))
+    randomX = -(parseFloat(Math.random().toPrecision(1) -.5))
   }else{
-    randomX = (parseFloat(Math.random().toPrecision(1)))
+    randomX = (parseFloat(Math.random().toPrecision(1) -.5))
   }
   if (yNeg === 0){
-    randomY = (parseFloat(Math.random().toPrecision(1)))
+    randomY = (parseFloat(Math.random().toPrecision(1)-.5 ))
   }else{
-    randomY = -(parseFloat(Math.random().toPrecision(1)))
+    randomY = -(parseFloat(Math.random().toPrecision(1)-.5 ))
   }
   return {x: randomX, y: randomY}
 }
