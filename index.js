@@ -168,19 +168,15 @@ function getTarget() {
 }
 
 function drawTarget() {
-
   //draw Target1
   ctx.fillStyle = "blue"
   ctx.fillRect(target.x, target.y, target.w, target.h)
-
   //draw Target2
   ctx.fillStyle = "salmon"
   ctx.fillRect(target2.x, target2.y, target2.w, target2.h)
- 
   //draw Target3
   ctx.fillStyle = "gold"
   ctx.fillRect(target3.x, target3.y, target3.w, target3.h)
-
 }
 
 function collision() {
@@ -239,7 +235,7 @@ function drawWind() {
   ctx.save()
   ctx.translate(750, 75)
   ctx.fillStyle = "black"
-  ctx.rotate(windAngle)
+  ctx.rotate(windAngle + Math.random()/10)
   // ctx.fillRect(-5, -50, 10, 50)
   ctx.drawImage(windImg,-25,-50,50,100)
   ctx.restore();
