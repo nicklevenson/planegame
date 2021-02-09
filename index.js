@@ -20,9 +20,9 @@ let windAngle = getWindAngle()
 let windPower = Math.round((Math.abs(windY) * Math.abs(windX)) * 100).toPrecision(3)
 let power = 0
 let gravity = 500
-startAngle()
+startRound()
 
-function startAngle() {
+function startRound() {
   anglage = setInterval(moveAnglePlane, 50);
   document.addEventListener('keyup', function space(e){
     if (e.code === "Space") {
@@ -123,6 +123,7 @@ function forwardPlane() {
   if (gravity <= 0) {
     clearInterval(anglage)
     console.log(collision())
+   
   }
   gravity -= 1
 }
