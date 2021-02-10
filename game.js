@@ -31,6 +31,7 @@ window.addEventListener('load', e=>{playGame()})
   }
 
   function addScore(s) {
+    control.style.backgroundColor = "tomato"
     controlTxt.innerText = "Next Round"
     tally += s
     score.innerText = `Score: ${tally}`
