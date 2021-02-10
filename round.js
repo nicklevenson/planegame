@@ -5,9 +5,9 @@ function newRound(){
 
 
   //sizing
-  canvas.height = (document.body.offsetHeight * .75) - 50
-  canvas.width = document.body.offsetWidth * .75
-
+  canvas.height = (document.body.offsetHeight * .75)
+  canvas.width = canvas.height * .75 - 100
+  gameStats.style.width = canvas.width + "px"
   let planeW = canvas.height * .05;
   let planeH = planeW * 1.25;
 
@@ -17,8 +17,8 @@ function newRound(){
   slideContainer.style.height = (canvas.height) + "px"
   let slideH = slideContainer.offsetHeight
 
-  let windW = 50
-  let windH = 100
+  let windW = 25
+  let windH = 50
 
   let ctx = canvas.getContext("2d");
   ctx.transform(1, 0, 0, -1, 0, canvas.height)
@@ -41,7 +41,9 @@ function newRound(){
   let windPower = ((Math.sqrt((Math.abs((windX*100)**2)) + (Math.abs((windY*100)**2))))).toPrecision(3)
 
   let power = 0
+  
   let gravity = canvas.height
+  // let gravity = 800
 
   const targetInfo = getTarget()
   const target = targetInfo.target
@@ -52,10 +54,10 @@ function newRound(){
   startRound()
 
   function startRound() {
-    control.innerText = "Choose Angle"
+    controlTxt.innerText = "Angle..."
     anglage = setInterval(moveAnglePlane, 50);
     control.addEventListener('click', function space(e){
-        control.innerText = "Choose Power and Fly"
+        controlTxt.innerText = "Power..."
         
         clearInterval(anglage)
         sliderLoop()
@@ -66,7 +68,7 @@ function newRound(){
   }
   function startSlide() {
     control.addEventListener('click', function space(e){
-      
+        controlTxt.innerText = "Woosh!"
         clearTimeout(doSlide)
         movePlane() 
         control.removeEventListener("click", space);
@@ -163,6 +165,7 @@ function newRound(){
       addScore(collision())
     }
     gravity -= 1
+    
   }
 
   function getXY(sideC, angle){
@@ -211,13 +214,13 @@ function newRound(){
 
   function drawTarget() {
     //draw Target1
-    ctx.fillStyle = "blue"
+    ctx.fillStyle = "lightblue"
     ctx.fillRect(target.x, target.y, target.w, target.h)
     //draw Target2
     ctx.fillStyle = "salmon"
     ctx.fillRect(target2.x, target2.y, target2.w, target2.h)
     //draw Target3
-    ctx.fillStyle = "gold"
+    ctx.fillStyle = "red"
     ctx.fillRect(target3.x, target3.y, target3.w, target3.h)
   }
 
@@ -286,7 +289,7 @@ function newRound(){
   function drawWindPower() {
     ctx.save()
     ctx.transform(1, 0, 0, -1, 0, canvas.height)
-    ctx.translate(canvas.width-50, canvas.height*.99)
+    ctx.translate(canvas.width-70, canvas.height*.98)
     ctx.font = "15px Arial";
     ctx.fillText(`${windPower} Mph`, -15, 0);
     ctx.restore();

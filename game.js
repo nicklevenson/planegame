@@ -2,6 +2,8 @@ window.addEventListener('load', e=>{playGame()})
   let score = document.getElementById("score")
   let roundTag = document.getElementById("round")
   let control = document.getElementById("control")
+  let controlTxt = document.getElementById("controlTxt")
+  let gameStats = document.getElementById("gameStats")
   let round = 1;
   let tally = 0;
 
@@ -19,7 +21,7 @@ window.addEventListener('load', e=>{playGame()})
     }else {
       console.log("done")
       roundTag.innerText = `Game Over.`
-      control.innerText = "Play Again?"
+      controlTxt.innerText = "Play Again?"
       control.addEventListener('click', function restart(){
         playGame()
         control.removeEventListener('click',restart)
@@ -28,7 +30,7 @@ window.addEventListener('load', e=>{playGame()})
   }
 
   function addScore(s) {
-    control.innerText = "Next Round"
+    controlTxt.innerText = "Next Round"
     tally += s
     score.innerText = `Score: ${tally}`
     control.addEventListener('click', function restart(){

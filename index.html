@@ -8,18 +8,26 @@
   <link rel="stylesheet" href="index.css">
 </head>
 <body>
-  
-    <canvas id="myCanvas" width="800" height="500"></canvas>
-
-    <div id="speedSlider">
-      <div id="slide"></div>
+    <div id="game">
+      <div id="gameStats">
+        <h1 id="score">Score: 0</h1>
+        <h1 id="round">Round: 1</h1>
+      </div>
+     
+      <div id="canvasAndSlide">
+        <canvas id="myCanvas" width="800" height="500"></canvas>
+        <div id="speedSlider">
+          <div id="slide"></div>
+        </div>
+      </div>
+      <div>
+        <div id="controlContainer">
+          <div id="control"></div><br>
+          <div id="controlTxt"></div>
+        </div>
+       
+      </div>
     </div>
-    <div>
-      <button id="control">Choose Angle</button>
-      <h1 id="score">Score: 0</h1>
-      <h1 id="round">Round: 1</h1>
-    </div>
-  
   <img id="plane" src="plane.png">
   <img id="wind" src="wind.png">
 </body>
