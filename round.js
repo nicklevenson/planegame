@@ -165,6 +165,7 @@ function newRound(){
       addScore(collision())
     }
     gravity -= 1
+    // ctx.translate(x, y);
     
   }
 
