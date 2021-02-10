@@ -1,4 +1,5 @@
-function newRound(){
+
+  function newRound(){
   const slideContainer = document.getElementById("speedSlider")
   const slide = document.getElementById("slide")
   let canvas = document.getElementById("myCanvas");

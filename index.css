@@ -55,7 +55,7 @@ canvas {
   width: 50vh;
   max-width: 200px;
   height: 75%;
-  margin-top: 30px;
+  margin-top: 40px;
 
 }
 #leaderboard p {
@@ -90,12 +90,12 @@ canvas {
 
 
 #gameStats{
-  height: 30px;
+  height: 40px;
   margin: auto;
 }
 
 #gameStats h1 {
-  font-size: 15px;
+  font-size: 20px;
   display: inline-block;
   font-weight: 400;
 }
