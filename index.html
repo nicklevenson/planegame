@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="index.css">
 </head>
 <body>
+  <div id="container">
     <div id="game">
       <div id="gameStats">
         <h1 id="score">Score: 0</h1>
@@ -20,16 +21,22 @@
           <div id="slide"></div>
         </div>
       </div>
-      <div>
-        <div id="controlContainer">
-          <div id="control"></div><br>
-          <div id="controlTxt"></div>
-        </div>
-       
+      
+      <div id="controlContainer">
+        <div id="control"></div>
+        <div id="controlTxt"></div>
       </div>
     </div>
-  <img id="plane" src="plane.png">
-  <img id="wind" src="wind.png">
+
+    <div id="leaderboardContainer">
+      <div id="leaderboard">
+        
+      </div>
+    </div>
+    <img id="plane" src="plane.png">
+    <img id="wind" src="wind.png">
+  </div>
+ 
 </body>
 <script type="text/javascript" src="game.js"></script>
 <script type="text/javascript" src="round.js"></script>

@@ -1,27 +1,34 @@
 body {
   width: 100%;
-  height: 100vh;
+  height: 100%;
   margin: 0;
   background-color: rgb(250, 238, 216);
+  
+}
+#container {
+  position: relative;
+  height: 75vh;
+  width: 100%;
+  display: -ms-flexbox;
+  text-align: center;
+  
 }
 #game {
+  display: inline-block;
+  width: min-content;
   margin: auto;
-  padding-top: 2vh;
-  text-align: center;
-  /* width: 50%; */
+  /* padding-top: 2vh; */
+  /* text-align: center; */
+
 }
 #canvasAndSlide {
+  position: relative;
   background-color: transparent;
   margin: auto;
-  /* padding: 5px; */
   width: max-content;
-  
   border-radius: 3px;
-  
 }
 canvas {
-  /* background-image:url(grass.jpg);
-  background-size: 100%; */
   background-color: rgb(155, 196, 160);
   display: inline-block;
 }
@@ -43,19 +50,27 @@ canvas {
   bottom: 0;
 }
 
-#plane {
-  height: 1px;
-  width: 1px;
+#leaderboardContainer {
+  display: inline-block;
+  height: 100%;
 }
 
-#wind{
-  height: 1px;
-  width: 1px;
+
+#leaderboard {
+  /* display: inline-block; */
+  /* margin: auto; */
+  background-color: rgb(218, 243, 190);
+  width: 30vh;
+  
+  height: 75%;
+  margin-top: 100px;
 }
+
 
 #controlContainer {
+  display: inline-block;
   margin-top: 25px;
-  width: 100%;
+  width: 25%;
   height: 50px;
 }
 #control{
@@ -93,4 +108,14 @@ canvas {
 
 #score {
   margin-right: 25%;
+}
+
+
+
+#plane {
+  display: none;
+}
+
+#wind{
+  display: none;
 }
