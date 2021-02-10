@@ -6,7 +6,7 @@ body {
 }
 #game {
   margin: auto;
-  margin-top: 20px;
+  padding-top: 2vh;
   text-align: center;
   /* width: 50%; */
 }
@@ -81,7 +81,7 @@ canvas {
 }
 
 #gameStats h1 {
-  font-size: 25px;
+  font-size: 15px;
   display: inline-block;
   font-weight: 400;
 }
