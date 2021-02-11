@@ -1,4 +1,4 @@
-// window.addEventListener('load', e=>{playGame()})
+
   const leaderboard = document.getElementById("leaderboard")
   const score = document.getElementById("score")
   const roundTag = document.getElementById("round")
@@ -16,12 +16,10 @@
   }
   function newGame() {
     if (round < 11) {
-      console.log(round)
       newRound()
       roundTag.innerText = `Round: ${round}/10`
       round ++
     }else {
-      console.log("done")
       roundTag.innerText = `Game Over.`
       controlTxt.innerText = "Play Again?"
       control.addEventListener('click', function restart(){

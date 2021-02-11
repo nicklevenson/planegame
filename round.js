@@ -1,92 +1,92 @@
 
   function newRound(){
-  const slideContainer = document.getElementById("speedSlider")
-  const slide = document.getElementById("slide")
-  let canvas = document.getElementById("myCanvas");
+    const slideContainer = document.getElementById("speedSlider")
+    const slide = document.getElementById("slide")
+    let canvas = document.getElementById("myCanvas");
 
 
-  //sizing
-  canvas.height = (screen.height * .6)
-  canvas.width = canvas.height * .75 - 100
-  leaderboard.style.height = canvas.height + "px"
-  gameStats.style.width = canvas.width + "px"
-  let planeW = canvas.height * .05;
-  let planeH = planeW * 1.25;
+    //sizing
+    canvas.height = (screen.height * .6)
+    canvas.width = canvas.height * .75 - 100
+    leaderboard.style.height = canvas.height + "px"
+    gameStats.style.width = canvas.width + "px"
+    let planeW = canvas.height * .05;
+    let planeH = planeW * 1.25;
 
-  let targetW = canvas.height * .125;
-  let targetH = targetW;
+    let targetW = canvas.height * .125;
+    let targetH = targetW;
 
-  slideContainer.style.height = (canvas.height) + "px"
-  let slideH = slideContainer.offsetHeight
+    slideContainer.style.height = (canvas.height) + "px"
+    let slideH = slideContainer.offsetHeight
 
-  let windW = 25
-  let windH = 50
+    let windW = 25
+    let windH = 50
 
-  let ctx = canvas.getContext("2d");
-  ctx.transform(1, 0, 0, -1, 0, canvas.height)
+    let ctx = canvas.getContext("2d");
+    ctx.transform(1, 0, 0, -1, 0, canvas.height)
 
-  //assets
-  const img = document.getElementById("plane")
-  const windImg = document.getElementById("wind")
+    //assets
+    const img = document.getElementById("plane")
+    const windImg = document.getElementById("wind")
 
-  //calibration
-  
+    //calibration
+    
 
-  //negative wind is a n || e. positive wind is s || w 
-  let windY = getWind().y
-  let windX = getWind().x
-  // let windY = 0
-  // let windX = 0
-  let windDirection = getWindDirection()
-  let windAngle = getWindAngle()
-  // let windPower = (((Math.abs(windY) * Math.abs(windX))+1)* 10).toPrecision(3)
-  let windPower = ((Math.sqrt((Math.abs((windX*100)**2)) + (Math.abs((windY*100)**2))))).toPrecision(3)
+    //negative wind is a n || e. positive wind is s || w 
+    let windY = getWind().y
+    let windX = getWind().x
+    // let windY = 0
+    // let windX = 0
+    let windDirection = getWindDirection()
+    let windAngle = getWindAngle()
+    // let windPower = (((Math.abs(windY) * Math.abs(windX))+1)* 10).toPrecision(3)
+    let windPower = ((Math.sqrt((Math.abs((windX*100)**2)) + (Math.abs((windY*100)**2))))).toPrecision(3)
 
-  let power = 0
-  
-  let gravity = canvas.height
-  // let gravity = 800
+    let power = 0
+    
+    let gravity = canvas.height
+    // let gravity = 800
 
-  const targetInfo = getTarget()
-  const target = targetInfo.target
-  const target2 = targetInfo.target2 
-  const target3 = targetInfo.target3
+    const targetInfo = getTarget()
+    const target = targetInfo.target
+    const target2 = targetInfo.target2 
+    const target3 = targetInfo.target3
 
-  //start a round
-  startRound()
+    //start a round
+    startRound()
 
-  function startRound() {
-    controlTxt.innerText = "Angle..."
-    anglage = setInterval(moveAnglePlane, 50);
-    control.addEventListener('click', function space(e){
-        controlTxt.innerText = "Power..."
-       
-        clearInterval(anglage)
-        sliderLoop()
-        startSlide()
-        control.removeEventListener("click", space);
-      
-    })
-  }
-  function startSlide() {
-    control.addEventListener('click', function space(e){
-        controlTxt.innerText = "Woosh!"
-        control.style.backgroundColor = "grey"
-        clearTimeout(doSlide)
-        movePlane() 
-        control.removeEventListener("click", space);
+    function startRound() {
+      controlTxt.innerText = "Angle..."
+      anglage = setInterval(moveAnglePlane, 50);
+      control.addEventListener('click', function space(e){
+          controlTxt.innerText = "Power..."
         
-      
-    })
-  }
+          clearInterval(anglage)
+          sliderLoop()
+          startSlide()
+          control.removeEventListener("click", space);
+        
+      })
+    }
+    function startSlide() {
+      control.addEventListener('click', function space(e){
+          controlTxt.innerText = "Woosh!"
+          control.style.backgroundColor = "grey"
+          clearTimeout(doSlide)
+          movePlane() 
+          control.removeEventListener("click", space);
+          
+        
+      })
+    }
 
-  let x = canvas.width/2;
-  let y = 30;
-  let dx = 0;
-  let dy = 0;
+    let x = canvas.width/2;
+    let y = 30;
+    let dx = 0;
+    let dy = 0;
 
-  let angle = 0
-  let direction = "right"
+    let angle = 0
+    let direction = "right"
 
   function rotatePlane() {
     drawTarget()
@@ -162,7 +162,6 @@
     dx -= windX
     if (gravity <= 0) {
       clearInterval(anglage)
-      console.log(collision())
       ctx.restore()
       slide.style.height = 0
       addScore(collision())
