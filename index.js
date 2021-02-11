@@ -20,8 +20,13 @@ function submitUser() {
   }
   fetch("http://localhost:3000/users", configObj)
   .then(resp => resp.json())
-  .then(json => setUser(json))
-  // setUser()
+  .then(function(json){
+    if (json.error === undefined){
+      setUser(json)
+    }else{
+      alert(json.error.message)
+    }
+    })
 }
 
 function setUser(json) {
