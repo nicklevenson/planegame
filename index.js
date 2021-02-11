@@ -2,6 +2,7 @@ const newUserContainer = document.getElementById("username")
 const newUserInput = document.getElementById("new-user-input")
 const newUserSubmit = document.getElementById("new-user-button")
 let currentUser;
+let leaderboardObject;
 
 const gameContainer = document.getElementById("container")
 
@@ -31,16 +32,18 @@ function submitUser() {
 }
 
 function setUser(json) {
-  currentUser = (new User(json.username)).username
+  currentUser = (new User(json.id, json.username, json.scores))
   // currentUser = newUserInput.value
   newUserContainer.remove()
-  new introCard(currentUser)
+  new introCard(currentUser.username)
 }
 
 
 class User {
-  constructor(username) {
+  constructor(id, username, scores) {
+    this.id = id
     this.username = username
+    this.scores = scores
   }
 }
 
@@ -61,5 +64,24 @@ class introCard{
       gameContainer.style.display = "inline-block"
       playGame()
     })
+  }
+}
+
+function newLeaderboard() {
+  fetch("http://localhost:3000/scores")
+  .then(resp => resp.json())
+  .then(function(json) {
+    leaderboardObject = new Leaderboard(json)
+  })
+}
+
+class Leaderboard {
+  constructor(scores) {
+    this.scores = scores
+  }
+
+  renderCard() {
+    let list = this.scores.map(s => `<li>${s}</li>`)
+    console.log(list)
   }
 }
