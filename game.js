@@ -1,5 +1,5 @@
 
-  const leaderboard = document.getElementById("leaderboard")
+
   const score = document.getElementById("score")
   const roundTag = document.getElementById("round")
   const control = document.getElementById("control")
@@ -58,7 +58,7 @@
       })
     }
     fetch("http://localhost:3000/scores", configObj)
-    .then(function(){newLeaderboard()})
+    .then(function(){newLeaderboard(); getUserInfo()})
     
   }
 

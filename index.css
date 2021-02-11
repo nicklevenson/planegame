@@ -55,15 +55,19 @@ canvas {
 
 #leaderboardContainer {
   display: inline-block;
-  height: 100%;
+ 
   vertical-align: top;
-}
-#leaderboard {
-  background-color: rgb(218, 243, 190);
   width: 50vh;
   max-width: 200px;
-  /* height: 55vh; */
+  background-color: rgb(218, 243, 190);
   margin-top: 40px;
+}
+#leaderboard {
+  height: 50%;
+  overflow-y: scroll;
+}
+#userScore {
+  height: 50%;
   overflow-y: scroll;
 }
 

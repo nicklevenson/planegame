@@ -1,7 +1,10 @@
+const leaderboardContainer = document.getElementById("leaderboardContainer")
+const leaderboard = document.getElementById("leaderboard")
 const newUserContainer = document.getElementById("username")
 const newUserInput = document.getElementById("new-user-input")
 const newUserSubmit = document.getElementById("new-user-button")
 const leaderboardList = document.getElementById("leaderboardList")
+
 let currentUser;
 
 
@@ -38,13 +41,31 @@ function setUser(json) {
   newUserContainer.remove()
   new introCard(currentUser.username)
 }
-
+function getUserInfo() {
+  fetch(`http://localhost:3000/users/${currentUser.id}`)
+  .then(resp => resp.json())
+  .then(function(json) {
+    currentUser = (new User(json.id, json.username, json.scores))
+    currentUser.renderCard()
+  })
+}
 
 class User {
   constructor(id, username, scores) {
     this.id = id
     this.username = username
     this.scores = scores
+  }
+
+  renderCard(){
+    const userCard = document.getElementById("userScore")
+    userCard.innerHTML = ''
+    userCard.innerHTML += `<h3>${currentUser.username}'s Scores</h3><hr>`
+    userCard.innerHTML += `<div id="userScoreList"></div>`
+    let cardList = document.getElementById("userScoreList")
+    this.scores.forEach(function(s) {
+      cardList.innerHTML += `<li>${s}</li>`
+    })
   }
 }
 
@@ -64,6 +85,7 @@ class introCard{
       card.remove()
       gameContainer.style.display = "inline-block"
       newLeaderboard()
+      currentUser.renderCard()
       playGame()
     })
   }
