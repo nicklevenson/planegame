@@ -56,10 +56,10 @@
     startRound()
 
     function startRound() {
-      controlTxt.innerText = "Angle..."
+      control.innerText = "Angle..."
       anglage = setInterval(moveAnglePlane, 50);
       control.addEventListener('click', function space(e){
-          controlTxt.innerText = "Power..."
+          control.innerText = "Power..."
         
           clearInterval(anglage)
           sliderLoop()
@@ -70,7 +70,7 @@
     }
     function startSlide() {
       control.addEventListener('click', function space(e){
-          controlTxt.innerText = "Woosh!"
+          control.innerText = "Woosh!"
           control.style.backgroundColor = "grey"
           clearTimeout(doSlide)
           movePlane() 

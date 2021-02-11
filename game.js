@@ -23,7 +23,7 @@
       submitScoreToDb(tally)
       
       roundTag.innerText = `Game Over.`
-      controlTxt.innerText = "Play Again?"
+      control.innerText = "Game Over! Play Again?"
       control.addEventListener('click', function restart(){
         playGame()
         control.removeEventListener('click',restart)
@@ -33,7 +33,7 @@
 
   function addScore(s) {
     control.style.backgroundColor = "tomato"
-    controlTxt.innerText = "Next Round"
+    control.innerText = "Next Round"
     tally += s
     score.innerText = `Score: ${tally}`
     control.addEventListener('click', function restart(){
