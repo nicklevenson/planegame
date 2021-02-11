@@ -2,8 +2,14 @@ body {
   width: 100%;
   height: 100%;
   margin: 0;
-  background-color: rgb(250, 238, 216);
-  
+  background-color: rgb(250, 238, 216); 
+}
+
+#username {
+  padding-top: 20%;
+  width: 50%;
+  margin: auto;
+  text-align: center;
 }
 #container {
   position: relative;
@@ -11,11 +17,13 @@ body {
   width: 100%;
   text-align: center;
   margin-top: 40px;
+  display: none;
 }
 #game {
   display: inline-block;
   width: min-content;
   margin: auto;
+  
 }
 #canvasAndSlide {
   position: relative;

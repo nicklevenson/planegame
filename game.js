@@ -1,4 +1,4 @@
-window.addEventListener('load', e=>{playGame()})
+// window.addEventListener('load', e=>{playGame()})
 
   let score = document.getElementById("score")
   let roundTag = document.getElementById("round")
