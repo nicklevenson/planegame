@@ -14,7 +14,7 @@ body {
 #container {
   position: relative;
   height: 75vh;
-  width: 100%;
+  width: 100vw;
   text-align: center;
   margin-top: 40px;
   display: none;
@@ -62,14 +62,9 @@ canvas {
   background-color: rgb(218, 243, 190);
   width: 50vh;
   max-width: 200px;
-  height: 75%;
+  /* height: 55vh; */
   margin-top: 40px;
 
-}
-#leaderboard p {
-  
-  margin: 0;
-  text-align: center;
 }
 
 
