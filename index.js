@@ -18,16 +18,16 @@ function submitUser() {
       username: newUserInput.value
     })
   }
-  // fetch("http://localhost:3000/users", configObj)
-  // .then(resp => resp.json())
-  // .then(json => setUser(json))
-  setUser()
+  fetch("http://localhost:3000/users", configObj)
+  .then(resp => resp.json())
+  .then(json => setUser(json))
+  // setUser()
 }
 
 function setUser(json) {
-  // currentUser = new User(json.username)
-  currentUser = newUserInput.value
-  newUserContainer.style.display = "none"
+  currentUser = (new User(json.username)).username
+  // currentUser = newUserInput.value
+  newUserContainer.remove()
   new introCard(currentUser)
 }
 
@@ -51,7 +51,7 @@ class introCard{
     card.innerHTML +=  `<button id="ready-to-fly">Ready to fly.</button>`
     let button = document.getElementById('ready-to-fly')
     button.addEventListener("click", (e) => {
-      card.style.display = "none"
+      card.remove()
       gameContainer.style.display = "inline-block"
       playGame()
     })
