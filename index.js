@@ -3,7 +3,7 @@ const newUserInput = document.getElementById("new-user-input")
 const newUserSubmit = document.getElementById("new-user-button")
 const leaderboardList = document.getElementById("leaderboardList")
 let currentUser;
-let leaderboardObject;
+
 
 const gameContainer = document.getElementById("container")
 
@@ -63,6 +63,7 @@ class introCard{
     button.addEventListener("click", (e) => {
       card.remove()
       gameContainer.style.display = "inline-block"
+      newLeaderboard()
       playGame()
     })
   }
@@ -72,7 +73,8 @@ function newLeaderboard() {
   fetch("http://localhost:3000/scores")
   .then(resp => resp.json())
   .then(function(json) {
-    leaderboardObject = new Leaderboard(json)
+    let leaderboardObject = new Leaderboard(json)
+    leaderboardObject.renderCard()
   })
 }
 
@@ -82,8 +84,8 @@ class Leaderboard {
   }
 
   renderCard() {
+    leaderboardList.innerHTML = ''
     let list = this.scores.map(s => `<li>${s}</li>`)
-    console.log(list)
     list.forEach(function(l) {
       leaderboardList.innerHTML += l
     })

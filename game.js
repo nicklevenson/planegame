@@ -20,6 +20,8 @@
       roundTag.innerText = `Round: ${round}/10`
       round ++
     }else {
+      submitScoreToDb(tally)
+      
       roundTag.innerText = `Game Over.`
       controlTxt.innerText = "Play Again?"
       control.addEventListener('click', function restart(){
@@ -39,5 +41,24 @@
       newGame()
       control.removeEventListener('click',restart)
     })
+  }
+
+  function submitScoreToDb(tally) {
+    let configObj = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      },
+      body: JSON.stringify({
+        score:{
+          score: tally,
+          user_id: currentUser.id
+        }
+      })
+    }
+    fetch("http://localhost:3000/scores", configObj)
+    .then(function(){newLeaderboard()})
+    
   }
 

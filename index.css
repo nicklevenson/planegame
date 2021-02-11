@@ -64,7 +64,7 @@ canvas {
   max-width: 200px;
   /* height: 55vh; */
   margin-top: 40px;
-
+  overflow-y: scroll;
 }
 
 
