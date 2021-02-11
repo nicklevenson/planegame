@@ -61,6 +61,7 @@ canvas {
   max-width: 200px;
   background-color: rgb(218, 243, 190);
   margin-top: 40px;
+  overflow: hidden;
 }
 #leaderboard {
   height: 50%;
@@ -69,6 +70,7 @@ canvas {
 #userScore {
   height: 50%;
   overflow-y: scroll;
+  background-color: bisque;
 }
 
 
