@@ -19,13 +19,14 @@ function submitUser() {
       username: newUserInput.value
     })
   }
-  fetch("http://localhost:3000/users", configObj)
-  .then(resp => resp.json())
-  .then(json => setUser(json))
+  // fetch("http://localhost:3000/users", configObj)
+  // .then(resp => resp.json())
+  // .then(json => setUser(json))
+  setUser()
 }
 
 function setUser(json) {
-  currentUser = new User(json.username)
+  // currentUser = new User(json.username)
   newUserContainer.style.display = "none"
   gameContainer.style.display = "inline-block"
   playGame()
@@ -35,4 +36,6 @@ class User {
   constructor(username) {
     this.username = username
   }
+
+
 }
