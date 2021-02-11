@@ -1,6 +1,7 @@
 const newUserContainer = document.getElementById("username")
 const newUserInput = document.getElementById("new-user-input")
 const newUserSubmit = document.getElementById("new-user-button")
+const leaderboardList = document.getElementById("leaderboardList")
 let currentUser;
 let leaderboardObject;
 
@@ -83,5 +84,8 @@ class Leaderboard {
   renderCard() {
     let list = this.scores.map(s => `<li>${s}</li>`)
     console.log(list)
+    list.forEach(function(l) {
+      leaderboardList.innerHTML += l
+    })
   }
 }
