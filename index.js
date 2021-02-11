@@ -27,7 +27,7 @@ function submitUser() {
       alert(json.error.message)
     }
     })
-  .catch(function(){ alert(error.message)})
+  .catch(function(error){ alert(error)})
 }
 
 function setUser(json) {
