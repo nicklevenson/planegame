@@ -2,6 +2,7 @@ const leaderboardContainer = document.getElementById("leaderboardContainer")
 const leaderboard = document.getElementById("leaderboard")
 const usernameContainer = document.getElementById("username-container")
 const newUserContainer = document.getElementById("username")
+const newUserInputs = document.getElementById("username-inputs")
 const newUserInput = document.getElementById("new-user-input")
 const newUserSubmit = document.getElementById("new-user-button")
 const leaderboardList = document.getElementById("leaderboardList")
@@ -39,7 +40,7 @@ function submitUser() {
 function setUser(json) {
   currentUser = (new User(json.id, json.username, json.scores))
   // currentUser = newUserInput.value
-  usernameContainer.remove()
+  newUserInputs.remove()
 
   new introCard(currentUser.username)
 }
@@ -79,12 +80,12 @@ class introCard{
   renderCard(){
     let card = document.createElement('div')
     card.className = "introCard"
-    document.body.append(card)
+    newUserContainer.append(card)
     card.innerHTML = `This is the story of ${this.username}.`
     card.innerHTML +=  `<button id="ready-to-fly">Ready to fly.</button>`
     let button = document.getElementById('ready-to-fly')
     button.addEventListener("click", (e) => {
-      card.remove()
+      usernameContainer.remove()
       gameContainer.style.display = "inline-block"
       newLeaderboard()
       currentUser.renderCard()
