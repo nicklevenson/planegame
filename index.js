@@ -101,7 +101,7 @@ function newLeaderboard() {
     leaderboardObject.renderCard()
   })
   setTimeout(newLeaderboard, 5000)
-  console.log("hello")
+ 
 }
 
 class Leaderboard {
