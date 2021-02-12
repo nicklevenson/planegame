@@ -283,7 +283,8 @@
     ctx.save()
     ctx.translate(canvas.width-50, canvas.height*.1)
     ctx.fillStyle = "black"
-    ctx.rotate(windAngle + Math.random()/10)
+    // ctx.rotate(windAngle + Math.random()/10)
+    ctx.rotate(windAngle)
     // ctx.fillRect(-5, -50, 10, 50)
     ctx.drawImage(windImg,-(windW/2),-(windH/2),windW,windH)
     ctx.restore();
