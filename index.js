@@ -1,5 +1,6 @@
 const leaderboardContainer = document.getElementById("leaderboardContainer")
 const leaderboard = document.getElementById("leaderboard")
+const usernameContainer = document.getElementById("username-container")
 const newUserContainer = document.getElementById("username")
 const newUserInput = document.getElementById("new-user-input")
 const newUserSubmit = document.getElementById("new-user-button")
@@ -38,7 +39,8 @@ function submitUser() {
 function setUser(json) {
   currentUser = (new User(json.id, json.username, json.scores))
   // currentUser = newUserInput.value
-  newUserContainer.remove()
+  usernameContainer.remove()
+
   new introCard(currentUser.username)
 }
 function getUserInfo() {

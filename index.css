@@ -7,11 +7,50 @@ body {
   background-size: 30vh;
   text-align: center;
 }
+button:focus, input:focus {
+  outline: none !important;
+  box-shadow: 1px 1px 5px gray;
+}
+#username-container {
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  position: relative;
+  
+}
 
 #username {
-  padding-top: 20%;
+  background-color:  rgb(250, 238, 216);
+  width: 30vh;
+  height: 30vw;
+  margin: auto;
+  margin-top: 20%;
+  box-shadow: 1px 1px 5px gray;
+  border-radius: 5px;
+}
+#new-user-input {
+  border: none;
+  margin-top: 40%;
+  width: 80%;
+  line-height: 30px;
+  border-radius: 5px;
+ 
+}
+
+#username button {
+  border: none;
+  margin-top: 20px;
+  background-color:rgb(250, 238, 216);
+  border-radius: 5px;
   width: 50%;
-  text-align: center;
+  line-height: 50px;
+  background-image: url(background.png);
+  background-size: 30px;
+  letter-spacing: 5px;
+  border-radius: 5px;
+}
+#username button:hover {
+  cursor: pointer;
 }
 #container {
   margin: auto;
@@ -128,7 +167,7 @@ canvas {
 }
 
 #gameStats h1 {
-  font-size: 20px;
+  font-size: 2vh;
   display: inline-block;
   font-weight: 400;
 }
