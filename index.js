@@ -24,7 +24,7 @@ function submitUser() {
       username: newUserInput.value
     })
   }
-  fetch("http://localhost:3000/users", configObj)
+  fetch("https://planegame-api.herokuapp.com/users", configObj)
   .then(resp => resp.json())
   .then(function(json){
     if (json.error === undefined){
@@ -44,7 +44,7 @@ function setUser(json) {
   new introCard(currentUser.username)
 }
 function getUserInfo() {
-  fetch(`http://localhost:3000/users/${currentUser.id}`)
+  fetch(`https://planegame-api.herokuapp.com/users/${currentUser.id}`)
   .then(resp => resp.json())
   .then(function(json) {
     currentUser = (new User(json.id, json.username, json.scores))
@@ -94,7 +94,7 @@ class introCard{
 }
 
 function newLeaderboard() {
-  fetch("http://localhost:3000/scores")
+  fetch("https://planegame-api.herokuapp.com/scores")
   .then(resp => resp.json())
   .then(function(json) {
     let leaderboardObject = new Leaderboard(json)

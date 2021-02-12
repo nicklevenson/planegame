@@ -57,7 +57,7 @@
         }
       })
     }
-    fetch("http://localhost:3000/scores", configObj)
+    fetch("https://planegame-api.herokuapp.com/scores", configObj)
     .then(function(){newLeaderboard(); getUserInfo()})
     
   }
