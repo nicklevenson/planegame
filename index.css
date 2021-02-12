@@ -35,10 +35,11 @@ button:focus, input:focus {
   border-radius: 5px;
   font-size: 1em;
   padding: 5px;
+  padding-top: 2%;
 }
 #new-user-input {
   border: none;
-  margin-top: 20%;
+  margin-top: 10%;
   width: 80%;
   line-height: 30px;
   border-radius: 5px;
