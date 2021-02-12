@@ -27,12 +27,14 @@ button:focus, input:focus {
   background-color:  rgb(155, 196, 160);
   width: 30%;
   min-width: 200px;
-  height: 30%;
+  height: min-content;
   min-height: 200px;
   margin: auto;
   margin-top: 20%;
   box-shadow: 1px 1px 5px gray;
   border-radius: 5px;
+  font-size: 1em;
+  padding: 5px;
 }
 #new-user-input {
   border: none;
