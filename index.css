@@ -1,3 +1,6 @@
+* {
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
 body {
   width: 100%;
   height: 100%;
@@ -7,6 +10,7 @@ body {
   background-size: 30vh;
   text-align: center;
 }
+
 button:focus, input:focus {
   outline: none !important;
   box-shadow: 1px 1px 5px gray;
@@ -20,7 +24,7 @@ button:focus, input:focus {
 }
 
 #username {
-  background-color:  rgb(250, 238, 216);
+  background-color:  rgb(155, 196, 160);
   width: 30vh;
   height: 30vw;
   margin: auto;
@@ -40,14 +44,15 @@ button:focus, input:focus {
 #username button {
   border: none;
   margin-top: 20px;
-  background-color:rgb(250, 238, 216);
+  background-color:tomato;
   border-radius: 5px;
   width: 50%;
-  line-height: 50px;
-  background-image: url(background.png);
-  background-size: 30px;
+  line-height: 25px;
+  /* background-image: url(background.png);
+  background-size: 30px; */
   letter-spacing: 5px;
-  border-radius: 5px;
+  border-radius: 2px;
+  color: white;
 }
 #username button:hover {
   cursor: pointer;
@@ -63,6 +68,7 @@ button:focus, input:focus {
   display: none;
   box-shadow: 1px 1px 5px gray;
   padding: 20px;
+  border-radius: 2px;
 }
 #game {
   display: inline-block;
