@@ -74,7 +74,7 @@ button:focus, input:focus {
   margin-bottom: 40px;
   display: none;
   box-shadow: 1px 1px 5px gray;
-  padding: 20px;
+  padding:10px;
   border-radius: 2px;
 }
 #game {
@@ -193,6 +193,9 @@ canvas {
   height: 50px;
 }
 
+#throw-count, #instructions {
+  font-size: 2vh;
+}
 
 
 #instructions span{
