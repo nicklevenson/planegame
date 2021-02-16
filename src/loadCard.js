@@ -1,8 +1,8 @@
 class loadCard {
-  constructor() {
-    this.renderCard();
+  constructor(node) {
+    this.renderCard(node);
   }
-  renderCard() {
+  renderCard(node) {
     let card = document.createElement('div')
     card.id = "loadContent"
     card.innerHTML = `<br>
@@ -10,7 +10,7 @@ class loadCard {
       <img src="assets/plane.png">
     </div>
     <h2>loading...</h2>`
-    username.append(card)
+    node.prepend(card)
   }
   hideCard() {
     let card = document.getElementById("loadContent")

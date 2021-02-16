@@ -6,6 +6,7 @@ const newUserInputs = document.getElementById("username-inputs")
 const newUserInput = document.getElementById("new-user-input")
 const newUserSubmit = document.getElementById("new-user-button")
 const leaderboardList = document.getElementById("leaderboardList")
+const userCard = document.getElementById("userScore")
 
 let currentUser;
 
@@ -17,7 +18,7 @@ newUserSubmit.addEventListener('click', submitUser)
 function submitUser() {
   newUserSubmit.removeEventListener('click', submitUser)
   // usernameContainer.style.display = "none"
-  let loading = new loadCard
+  let loading = new loadCard(newUserContainer)
   let configObj = {
     method: "POST",
     headers: {
@@ -51,14 +52,17 @@ function submitUser() {
 }
 
 function setUser(json) {
+  
   currentUser = (new User(json.id, json.username, json.scores))
   newUserInputs.remove()
   new introCard(currentUser.username)
 }
 function getUserInfo() {
+  let loading = new loadCard(userCard)
   fetch(`https://planegame-api.herokuapp.com/users/${currentUser.id}`)
   .then(resp => resp.json())
   .then(function(json) {
+    // loading.hideCard()
     currentUser = (new User(json.id, json.username, json.scores))
     currentUser.renderCard()
   })
@@ -66,9 +70,11 @@ function getUserInfo() {
 }
 
 function newLeaderboard() {
+  let loading = new loadCard(leaderboard)
   fetch("https://planegame-api.herokuapp.com/scores")
   .then(resp => resp.json())
   .then(function(json) {
+    loading.hideCard()
     let leaderboardObject = new Leaderboard(json.scores)
     leaderboardObject.renderCard()
     let title = document.getElementById("throw-count")

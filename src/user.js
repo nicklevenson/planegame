@@ -6,7 +6,7 @@ class User {
   }
 
   renderCard(){
-    const userCard = document.getElementById("userScore")
+    
     userCard.innerHTML = ''
     userCard.innerHTML += `<h3>${currentUser.username}'s Scores</h3>`
     userCard.innerHTML += `<div id="userScoreList"></div>`
