@@ -72,7 +72,7 @@ function newLeaderboard() {
     let leaderboardObject = new Leaderboard(json.scores)
     leaderboardObject.renderCard()
     let title = document.getElementById("throw-count")
-    title.innerText = `(Over ${json.all * 10} throws and counting!)`
+    title.innerText = `(${json.all * 10} throws and counting!)`
   })
   .catch(e => alert("Connection issues. Scores may not be recorded."))
   // setTimeout(newLeaderboard, 5000)
