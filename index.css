@@ -190,7 +190,7 @@ canvas {
 }
 
 #loading img{
-  height: 50px;
+  height: 3vh;
 }
 
 #throw-count, #instructions {
