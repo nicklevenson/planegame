@@ -136,13 +136,13 @@ canvas {
 
 #leaderboardList {
   overflow-y: scroll;
-  height: 100%;
+  height: 90%;
   margin: 0;
 }
 
 #userScoreList {
   overflow-y: scroll; 
-  height: 100%;
+  height: 90%;
   margin: 0;
 }
 
