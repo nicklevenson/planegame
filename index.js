@@ -12,9 +12,12 @@ let currentUser;
 
 const gameContainer = document.getElementById("container")
 
-newUserSubmit.addEventListener('click', e => submitUser())
+newUserSubmit.addEventListener('click', submitUser)
 
 function submitUser() {
+  newUserSubmit.removeEventListener('click', submitUser)
+  usernameContainer.style.display = "none"
+  let loading = new loadCard
   let configObj = {
     method: "POST",
     headers: {
@@ -30,9 +33,12 @@ function submitUser() {
   .then(function(json){
     if (json.error === undefined){
       setUser(json)
+      loading.hideCard()
     }else{
       alert(json.error.message)
     }
+    newUserSubmit.addEventListener('click', submitUser)
+    usernameContainer.style.display = "inline-block"
     })
   .catch(function(error){ alert(error)})
 }
