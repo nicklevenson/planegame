@@ -70,8 +70,8 @@ button:focus, input:focus {
   /* width: max-content; */
   max-width: 75vw;
   text-align: center;
-  margin-top: 40px;
-  margin-bottom: 40px;
+  margin-top: 3vh;
+  
   display: none;
   box-shadow: 1px 1px 5px gray;
   padding:10px;
@@ -175,7 +175,7 @@ canvas {
 }
 
 #gameStats{
-  height: 40px;
+  height: 4vh;
   margin: auto;
 }
 
