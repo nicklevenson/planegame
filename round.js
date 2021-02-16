@@ -6,8 +6,8 @@
 
 
     //sizing
-    canvas.height = (screen.height * .6)
-    canvas.width = canvas.height * .65 - 100
+    canvas.height = (screen.height * .5)
+    canvas.width = canvas.height * .75 - 100
     leaderboardContainer.style.height = canvas.height + "px"
     gameStats.style.width = canvas.width + "px"
     let planeW = canvas.height * .05;
