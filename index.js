@@ -40,7 +40,12 @@ function submitUser() {
     newUserSubmit.addEventListener('click', submitUser)
     usernameContainer.style.display = "inline-block"
     })
-  .catch(function(error){ alert(error)})
+  .catch(function(error){ 
+    alert("Please check your internet connection.")
+    newUserSubmit.addEventListener('click', submitUser)
+    usernameContainer.style.display = "inline-block"
+  })
+  
 }
 
 function setUser(json) {
@@ -55,6 +60,7 @@ function getUserInfo() {
     currentUser = (new User(json.id, json.username, json.scores))
     currentUser.renderCard()
   })
+  .catch(e => alert("Connection issues. Scores may not be recorded."))
 }
 
 function newLeaderboard() {
@@ -64,7 +70,7 @@ function newLeaderboard() {
     let leaderboardObject = new Leaderboard(json)
     leaderboardObject.renderCard()
   })
+  .catch(e => alert("Connection issues. Scores may not be recorded."))
   // setTimeout(newLeaderboard, 5000)
- 
 }
 

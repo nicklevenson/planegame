@@ -59,6 +59,6 @@
     }
     fetch("https://planegame-api.herokuapp.com/scores", configObj)
     .then(function(){newLeaderboard(); getUserInfo()})
-    
+    .catch(e => alert("Connection issues. Scores may not be recorded."))
   }
 
