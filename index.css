@@ -2,8 +2,8 @@
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 body {
-  width: 100%;
-  height: 100%;
+  /* width: 100%;
+  height: 100%; */
   margin: 0;
   background-color: rgb(250, 238, 216); 
   background-image: url(background.png);
@@ -71,6 +71,7 @@ button:focus, input:focus {
   max-width: 75vw;
   text-align: center;
   margin-top: 40px;
+  margin-bottom: 40px;
   display: none;
   box-shadow: 1px 1px 5px gray;
   padding: 20px;
@@ -136,13 +137,13 @@ canvas {
 
 #leaderboardList {
   overflow-y: scroll;
-  height: 90%;
+  height: 80%;
   margin: 0;
 }
 
 #userScoreList {
   overflow-y: scroll; 
-  height: 90%;
+  height: 80%;
   margin: 0;
 }
 
@@ -157,9 +158,9 @@ canvas {
   margin: auto;
   background-color: tomato;
   width: 100%;
-  height: 35px;
+  /* height: 35px; */
   border-radius: 2px;
-  font-size: 25px;
+  font-size: 2em;
   letter-spacing: 4px;
   color: white;
   vertical-align: middle;
@@ -192,7 +193,32 @@ canvas {
   height: 50px;
 }
 
-h3 {
+#instructions span{
+  font-size:  2vh;
+  padding: 5px;
+}
+
+#blue-square {
+  display: inline-block;
+  height: 10px;
+  width: 10px;
+  background-color: lightblue;
+}
+
+#salmon-square {
+  display: inline-block;
+  height: 10px;
+  width: 10px;
+  background-color: salmon;
+}
+
+#red-square{
+  display: inline-block;
+  height: 10px;
+  width: 10px;
+  background-color: red;
+}
+h3, h2{
   margin: 0;
 }
 
