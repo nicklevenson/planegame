@@ -3,11 +3,18 @@ class loadCard {
     this.renderCard();
   }
   renderCard() {
-    let card = document.getElementById("loading")
-    card.style.display = "inline-block"
+    let card = document.createElement('div')
+    card.id = "loadContent"
+    card.innerHTML = `<br>
+    <div id="loading" class="rotating">
+      <img src="plane.png">
+    </div>
+    <h2>loading...</h2>`
+    username.append(card)
   }
   hideCard() {
-    let card = document.getElementById("loading")
-    card.style.display = "none"
+    let card = document.getElementById("loadContent")
+    card.innerHTML = ''
+    card.remove()
   }
 }

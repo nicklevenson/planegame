@@ -16,7 +16,7 @@ newUserSubmit.addEventListener('click', submitUser)
 
 function submitUser() {
   newUserSubmit.removeEventListener('click', submitUser)
-  usernameContainer.style.display = "none"
+  // usernameContainer.style.display = "none"
   let loading = new loadCard
   let configObj = {
     method: "POST",
@@ -36,14 +36,16 @@ function submitUser() {
       loading.hideCard()
     }else{
       alert(json.error.message)
+      loading.hideCard()
     }
     newUserSubmit.addEventListener('click', submitUser)
-    usernameContainer.style.display = "inline-block"
+    // usernameContainer.style.display = "inline-block"
     })
   .catch(function(error){ 
     alert("Please check your internet connection.")
     newUserSubmit.addEventListener('click', submitUser)
-    usernameContainer.style.display = "inline-block"
+    // usernameContainer.style.display = "inline-block"
+    loading.hideCard()
   })
   
 }
