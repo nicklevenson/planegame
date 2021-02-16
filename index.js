@@ -7,17 +7,13 @@ const newUserInput = document.getElementById("new-user-input")
 const newUserSubmit = document.getElementById("new-user-button")
 const leaderboardList = document.getElementById("leaderboardList")
 const userCard = document.getElementById("userScore")
-
 let currentUser;
-
-
 const gameContainer = document.getElementById("container")
 
 newUserSubmit.addEventListener('click', submitUser)
 
 function submitUser() {
   newUserSubmit.removeEventListener('click', submitUser)
-  // usernameContainer.style.display = "none"
   let loading = new loadCard(newUserContainer)
   let configObj = {
     method: "POST",
@@ -40,12 +36,10 @@ function submitUser() {
       loading.hideCard()
     }
     newUserSubmit.addEventListener('click', submitUser)
-    // usernameContainer.style.display = "inline-block"
     })
   .catch(function(error){ 
     alert("Please check your internet connection.")
     newUserSubmit.addEventListener('click', submitUser)
-    // usernameContainer.style.display = "inline-block"
     loading.hideCard()
   })
   
@@ -58,11 +52,10 @@ function setUser(json) {
   new introCard(currentUser.username)
 }
 function getUserInfo() {
-  let loading = new loadCard(userCard)
+  new loadCard(userCard)
   fetch(`https://planegame-api.herokuapp.com/users/${currentUser.id}`)
   .then(resp => resp.json())
   .then(function(json) {
-    // loading.hideCard()
     currentUser = (new User(json.id, json.username, json.scores))
     currentUser.renderCard()
   })
