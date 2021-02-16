@@ -7,7 +7,7 @@ class loadCard {
     card.id = "loadContent"
     card.innerHTML = `<br>
     <div id="loading" class="rotating">
-      <img src="plane.png">
+      <img src="assets/plane.png">
     </div>
     <h2>loading...</h2>`
     username.append(card)
