@@ -1,13 +1,23 @@
 class Ambience {
   constructor() {
+    
     this.sound = document.createElement("audio");
     this.sound.id = "music"
     this.sound.src = 'assets/ambiance.wav';
     this.sound.setAttribute("preload", "auto");
     this.sound.setAttribute("controls", "none");
     this.sound.style.display = "none";
-    this.sound.loop = true;
+    this.sound.loop = false;
     document.body.appendChild(this.sound);
+    this.sound.addEventListener('ended', e => {
+      console.log(this.sound.src)
+      if (this.sound.src.includes("assets/jazz.flac")) {
+        this.sound.src = "assets/ambiance.wav"
+      }else{ 
+        this.sound.src = 'assets/jazz.flac'
+      }
+      this.sound.play()
+    })
   }
  
 
@@ -22,9 +32,7 @@ class Ambience {
     let toggle = document.getElementById("toggle-music")
     toggle.innerText = "Music On"
     toggle.addEventListener("click", e => {this.play(); toggle.removeEventListener('click', e)})
-    
   }
-
 }
 
 class Woosh {
