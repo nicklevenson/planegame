@@ -37,8 +37,10 @@ class Ambience {
 const fxToggle = document.getElementById("toggle-fx")
 fxOn()
 function fxOn() {
+  console.log("hello")
   fxToggle.innerText = "Sound FX Off"
   fxToggle.value = "on"
+  fxToggle.removeEventListener("click", fxOn)
   fxToggle.addEventListener("click", function fxToggler(e) {
     fxToggle.value = "off"
     fxToggle.innerText = "Sound FX On"
