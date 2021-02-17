@@ -197,6 +197,9 @@ canvas {
   font-size: 2vh;
 }
 
+#instructions {
+  margin: 1vh;
+}
 
 #instructions span{
   font-size:  2vh;
