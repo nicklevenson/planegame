@@ -20,7 +20,7 @@ button:focus, input:focus {
   height: 100%;
   margin: 0;
   position: relative;
-  padding-top: 25%;
+  padding-top: 15%;
 }
 
 #username {
