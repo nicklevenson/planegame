@@ -182,7 +182,9 @@ canvas {
 
 #gameStats{
   height: 4vh;
-  margin: auto;
+  /* text-align: center; */
+  margin: 0;
+  width: 100% !important;
 }
 
 #gameStats h1 {
@@ -192,7 +194,14 @@ canvas {
 }
 
 #score {
-  margin-right: 25%;
+  display: inline-block;
+  width: 40%;
+  text-align: left;
+}
+#round {
+  display: inline-block;
+  width: 40%;
+  text-align: right;
 }
 
 #loading img{
