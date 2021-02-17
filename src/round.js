@@ -66,11 +66,13 @@
     }
     function startSlide() {
       control.addEventListener('click', function space(e){
-          control.innerText = "Woosh!"
+          control.innerText = "Throw!"
           control.style.backgroundColor = "grey"
           clearTimeout(doSlide)
           woosh.play()
           movePlane() 
+          throwCount ++
+          throwCountTitle.innerText = `(${throwCount} throws and counting!)`
           control.removeEventListener("click", space);
       })
     }

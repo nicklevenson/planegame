@@ -12,6 +12,8 @@ const leaderboardList = document.getElementById("leaderboardList")
 const userCard = document.getElementById("userScore")
 let currentUser;
 const gameContainer = document.getElementById("container")
+let throwCountTitle = document.getElementById("throw-count")
+let throwCount;
 
 newUserSubmit.addEventListener('click', submitUser)
 
@@ -75,8 +77,8 @@ function newLeaderboard() {
     loading.hideCard()
     let leaderboardObject = new Leaderboard(json.scores)
     leaderboardObject.renderCard()
-    let title = document.getElementById("throw-count")
-    title.innerText = `(${json.all * 10} throws and counting!)`
+    throwCount = json.all * 10
+    throwCountTitle.innerText = `(${throwCount} throws and counting!)`
   })
   .catch(e => alert("Connection issues. Scores may not be recorded."))
   // setTimeout(newLeaderboard, 5000)

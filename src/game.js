@@ -9,7 +9,6 @@
 
 
   function playGame() {
-
     round = 1;
     tally = 0;
     score.innerText = `Score: ${tally}`
