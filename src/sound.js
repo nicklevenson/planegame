@@ -10,8 +10,8 @@ class Ambience {
     this.sound.loop = false;
     document.body.appendChild(this.sound);
     this.sound.addEventListener('ended', e => {
-      console.log(this.sound.src)
-      if (this.sound.src.includes("assets/jazz.flac")) {
+      let randomNum = Math.floor(Math.random() * 6)
+      if (randomNum < 5) {
         this.sound.src = "assets/ambiance.wav"
       }else{ 
         this.sound.src = 'assets/jazz.flac'
@@ -19,8 +19,7 @@ class Ambience {
       this.sound.play()
     })
   }
- 
-
+   
   play(){
     this.sound.play();
     let toggle = document.getElementById("toggle-music")
