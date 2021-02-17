@@ -6,9 +6,9 @@ class User {
   }
 
   renderCard(){
-    
     userCard.innerHTML = ''
-    userCard.innerHTML += `<h3>${currentUser.username}'s Scores</h3>`
+    userCard.innerHTML += `<h3>${this.username}'s Scores</h3>`
+    userCard.innerHTML += `<i>(${this.scores.length} Games played)</i>`
     userCard.innerHTML += `<div id="userScoreList"></div>`
     let cardList = document.getElementById("userScoreList")
     this.scores.forEach(function(s) {
