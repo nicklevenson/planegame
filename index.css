@@ -27,19 +27,18 @@ button:focus, input:focus {
   background-color:  rgb(155, 196, 160);
   width: 30%;
   min-width: 200px;
-  height: min-content;
-  min-height: 200px;
+  height: max-content;
+  min-height: 100px;
   margin: auto;
-  
   box-shadow: 1px 1px 5px gray;
   border-radius: 5px;
   font-size: 1em;
-  padding: 5px;
-  padding-top: 2%;
+  padding: 3%;
+  
 }
 #new-user-input {
   border: none;
-  margin-top: 10%;
+  margin-top: 4%;
   width: 80%;
   line-height: 30px;
   border-radius: 5px;
