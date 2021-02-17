@@ -115,7 +115,7 @@ canvas {
   vertical-align: top;
   width: 50vh;
   max-width: 200px;
-  margin-top: 40px;
+  margin-top: 4vh;
   overflow: hidden;
 }
 
@@ -124,6 +124,7 @@ canvas {
   height: 50%;
   background-color: rgb(218, 243, 190);
   margin: 10px;
+  margin-top: 0;
   overflow: hidden;
 }
 #userScore {
