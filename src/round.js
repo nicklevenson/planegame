@@ -74,6 +74,8 @@
           control.style.backgroundColor = "grey"
           clearTimeout(doSlide)
           movePlane() 
+          woosh = new Woosh
+          woosh.play()
           control.removeEventListener("click", space);
           
         
@@ -136,6 +138,7 @@
   }
 
   function forwardPlane() {
+   
     // angle += wind
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     drawTarget()

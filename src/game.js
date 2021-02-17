@@ -9,6 +9,8 @@
   let tally = 0;
 
   function playGame() {
+    amb = new Ambience
+    amb.play()
     round = 1;
     tally = 0;
     score.innerText = `Score: ${tally}`
