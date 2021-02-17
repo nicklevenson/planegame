@@ -4,7 +4,6 @@
     const slide = document.getElementById("slide")
     let canvas = document.getElementById("myCanvas");
 
-
     //sizing
     canvas.height = (screen.height * .5)
     canvas.width = canvas.height * .75 - 100
@@ -30,8 +29,7 @@
     const windImg = document.getElementById("wind")
 
     //calibration
-    
-
+  
     //negative wind is a n || e. positive wind is s || w 
     let windY = getWind().y
     let windX = getWind().x
@@ -60,12 +58,10 @@
       anglage = setInterval(moveAnglePlane, 50);
       control.addEventListener('click', function space(e){
           control.innerText = "Power..."
-        
           clearInterval(anglage)
           sliderLoop()
           startSlide()
           control.removeEventListener("click", space);
-        
       })
     }
     function startSlide() {
@@ -76,8 +72,6 @@
           woosh.play()
           movePlane() 
           control.removeEventListener("click", space);
-          
-        
       })
     }
 
@@ -245,12 +239,15 @@
     // ctx.fillStyle="black"
     // ctx.fillRect(x + xAdjust, y+yAdjust, 4,4)
     if ((x + xAdjust >= target3.x && x + xAdjust <= target3.x + target3.w)&&(y + yAdjust>= target3.y && y + yAdjust <= target3.y + target3.h)) {
+      scoreSound.play()
       return 5
     }
     if ((x + xAdjust >= target2.x && x + xAdjust <= target2.x + target2.w)&&(y + yAdjust >= target2.y && y + yAdjust<= target2.y + target2.h)) {
+      scoreSound.play()
       return 2
     }
     if ((x + xAdjust >= target.x && x + xAdjust <= target.x + target.w)&&(y + yAdjust >= target.y && y + yAdjust <= target.y + target.h)) {
+      scoreSound.play()
       return 1
     }else{
       return 0

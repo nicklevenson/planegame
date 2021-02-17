@@ -1,6 +1,7 @@
 
   const woosh = new Woosh
   const land = new Land 
+  const scoreSound = new Score
   const score = document.getElementById("score")
   const roundTag = document.getElementById("round")
   const control = document.getElementById("control")
