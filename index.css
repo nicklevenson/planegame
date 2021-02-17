@@ -204,6 +204,7 @@ canvas {
 
 #instructions {
   margin: 1vh;
+  height: 7vh;
 }
 
 #instructions span{
