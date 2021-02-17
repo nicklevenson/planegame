@@ -49,6 +49,8 @@ function setUser(json) {
   currentUser = (new User(json.id, json.username, json.scores))
   newUserInputs.remove()
   new introCard(currentUser.username)
+  amb = new Ambience
+  amb.play()
 }
 function getUserInfo() {
   new loadCard(userCard)

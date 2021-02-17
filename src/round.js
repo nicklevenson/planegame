@@ -165,6 +165,8 @@
     dx -= windX
     if (gravity <= 0) {
       clearInterval(anglage)
+      land = new Land
+      land.play()
       ctx.restore()
       slide.style.height = 0
       addScore(collision())
