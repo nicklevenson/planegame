@@ -11,6 +11,7 @@ class introCard{
     card.innerHTML +=  `<br><button id="ready-to-fly">Ready to fly.</button>`
     let button = document.getElementById('ready-to-fly')
     button.addEventListener("click", (e) => {
+      woosh.play()
       usernameContainer.remove()
       gameContainer.style.display = "inline-block"
       newLeaderboard()
