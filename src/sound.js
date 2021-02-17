@@ -112,3 +112,23 @@ class Score{
     this.sound.pause();
   }
 }
+class Bullseye{
+  constructor() {
+    this.sound = document.createElement("audio");
+    this.sound.id = "score"
+    this.sound.src = 'assets/bullseye.wav';
+    this.sound.setAttribute("preload", "auto");
+    this.sound.setAttribute("controls", "none");
+    this.sound.style.display = "none";
+    document.body.appendChild(this.sound);
+  }
+
+  play(){
+    if (fxToggle.value === "on"){
+      this.sound.play();
+    }
+  }
+  stop(){
+    this.sound.pause();
+  }
+}

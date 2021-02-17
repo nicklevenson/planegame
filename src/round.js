@@ -241,7 +241,7 @@
     // ctx.fillStyle="black"
     // ctx.fillRect(x + xAdjust, y+yAdjust, 4,4)
     if ((x + xAdjust >= target3.x && x + xAdjust <= target3.x + target3.w)&&(y + yAdjust>= target3.y && y + yAdjust <= target3.y + target3.h)) {
-      scoreSound.play()
+      bullseye.play()
       return 5
     }
     if ((x + xAdjust >= target2.x && x + xAdjust <= target2.x + target2.w)&&(y + yAdjust >= target2.y && y + yAdjust<= target2.y + target2.h)) {

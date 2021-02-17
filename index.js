@@ -1,6 +1,7 @@
 const woosh = new Woosh
 const land = new Land 
 const scoreSound = new Score
+const bullseye = new Bullseye
 const leaderboardContainer = document.getElementById("leaderboardContainer")
 const leaderboard = document.getElementById("leaderboard")
 const usernameContainer = document.getElementById("username-container")
