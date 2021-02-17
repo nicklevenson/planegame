@@ -1,6 +1,5 @@
 class Ambience {
   constructor() {
-    
     this.sound = document.createElement("audio");
     this.sound.id = "music"
     this.sound.src = 'assets/ambiance.wav';
@@ -11,7 +10,7 @@ class Ambience {
     document.body.appendChild(this.sound);
     this.sound.addEventListener('ended', e => {
       let randomNum = Math.floor(Math.random() * 6)
-      if (randomNum < 5) {
+      if (randomNum < 4) {
         this.sound.src = "assets/ambiance.wav"
       }else{ 
         this.sound.src = 'assets/jazz.flac'
@@ -34,6 +33,21 @@ class Ambience {
   }
 }
 
+
+const fxToggle = document.getElementById("toggle-fx")
+fxOn()
+function fxOn() {
+  fxToggle.innerText = "Sound FX Off"
+  fxToggle.value = "on"
+  fxToggle.addEventListener("click", function fxToggler(e) {
+    fxToggle.value = "off"
+    fxToggle.innerText = "Sound FX On"
+    fxToggle.removeEventListener("click", fxToggler)
+    fxToggle.addEventListener("click", fxOn)
+  })
+}
+
+
 class Woosh {
   constructor() {
     this.sound = document.createElement("audio");
@@ -43,12 +57,13 @@ class Woosh {
     this.sound.setAttribute("controls", "none");
     this.sound.style.display = "none";
     document.body.appendChild(this.sound);
-
   }
 
 
   play(){
-    this.sound.play();
+    if (fxToggle.value === "on"){
+      this.sound.play();
+    }
   }
   stop(){
     this.sound.pause();
@@ -67,7 +82,9 @@ class Land{
   }
 
   play(){
-    this.sound.play();
+    if (fxToggle.value === "on"){
+      this.sound.play();
+    }
   }
   stop(){
     this.sound.pause();
@@ -85,7 +102,9 @@ class Score{
   }
 
   play(){
-    this.sound.play();
+    if (fxToggle.value === "on"){
+      this.sound.play();
+    }
   }
   stop(){
     this.sound.pause();
