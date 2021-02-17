@@ -14,13 +14,13 @@ class Ambience {
   play(){
     this.sound.play();
     let toggle = document.getElementById("toggle-music")
-    toggle.innerText = "Sound Off"
+    toggle.innerText = "Music Off"
     toggle.addEventListener("click", e => {this.stop(); toggle.removeEventListener('click', e)})
   }
   stop(){
     this.sound.pause();
     let toggle = document.getElementById("toggle-music")
-    toggle.innerText = "Sound On"
+    toggle.innerText = "Music On"
     toggle.addEventListener("click", e => {this.play(); toggle.removeEventListener('click', e)})
     
   }

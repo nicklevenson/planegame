@@ -1,5 +1,6 @@
 
-
+  const woosh = new Woosh
+  const land = new Land 
   const score = document.getElementById("score")
   const roundTag = document.getElementById("round")
   const control = document.getElementById("control")
@@ -7,6 +8,7 @@
   const gameStats = document.getElementById("gameStats")
   let round = 1;
   let tally = 0;
+
 
   function playGame() {
 

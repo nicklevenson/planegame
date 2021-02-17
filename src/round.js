@@ -73,9 +73,8 @@
           control.innerText = "Woosh!"
           control.style.backgroundColor = "grey"
           clearTimeout(doSlide)
-          movePlane() 
-          woosh = new Woosh
           woosh.play()
+          movePlane() 
           control.removeEventListener("click", space);
           
         
@@ -165,7 +164,6 @@
     dx -= windX
     if (gravity <= 0) {
       clearInterval(anglage)
-      land = new Land
       land.play()
       ctx.restore()
       slide.style.height = 0
