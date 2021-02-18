@@ -15,7 +15,11 @@ let currentUser;
 const gameContainer = document.getElementById("container")
 let throwCountTitle = document.getElementById("throw-count")
 let throwCount;
-
+const score = document.getElementById("score")
+const roundTag = document.getElementById("round")
+const control = document.getElementById("control")
+const controlTxt = document.getElementById("controlTxt")
+const gameStats = document.getElementById("gameStats")
 newUserSubmit.addEventListener('click', submitUser)
 
 function submitUser() {

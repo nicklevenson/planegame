@@ -16,7 +16,7 @@ class introCard{
       gameContainer.style.display = "inline-block"
       newLeaderboard()
       currentUser.renderCard()
-      playGame()
+      gameFunction()
     })
   }
 }
