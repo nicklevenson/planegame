@@ -22,13 +22,13 @@ class Ambience {
   play(){
     this.sound.play();
     let toggle = document.getElementById("toggle-music")
-    toggle.innerText = "Music Off"
+    toggle.innerText = "Music On"
     toggle.addEventListener("click", e => {this.stop(); toggle.removeEventListener('click', e)})
   }
   stop(){
     this.sound.pause();
     let toggle = document.getElementById("toggle-music")
-    toggle.innerText = "Music On"
+    toggle.innerText = "Music Off"
     toggle.addEventListener("click", e => {this.play(); toggle.removeEventListener('click', e)})
   }
 }
@@ -38,12 +38,12 @@ const fxToggle = document.getElementById("toggle-fx")
 fxOn()
 function fxOn() {
   console.log("hello")
-  fxToggle.innerText = "Sound FX Off"
+  fxToggle.innerText = "Sound FX On"
   fxToggle.value = "on"
   fxToggle.removeEventListener("click", fxOn)
   fxToggle.addEventListener("click", function fxToggler(e) {
     fxToggle.value = "off"
-    fxToggle.innerText = "Sound FX On"
+    fxToggle.innerText = "Sound FX Off"
     fxToggle.removeEventListener("click", fxToggler)
     fxToggle.addEventListener("click", fxOn)
   })
