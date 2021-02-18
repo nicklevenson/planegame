@@ -94,10 +94,10 @@
     ctx.fillStyle = 'red';
     // ctx.fillRect(0, 0, 5, 20);
     ctx.drawImage(img,-(planeW/2),0,planeW,planeH)
-    if (angle >= 1) {
+    if (angle >= 1.5) {
       direction = "left"
     }   
-    if (angle <= -1) {
+    if (angle <= -1.5) {
       direction = "right"
     } 
   angle = anglePlane(angle, direction)
