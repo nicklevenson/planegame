@@ -2,7 +2,7 @@ class Ambience {
   constructor() {
     this.sound = document.createElement("audio");
     this.sound.id = "music"
-    this.sound.src = 'assets/ambiance.wav';
+    this.sound.src = 'assets/planetheme.mp3';
     this.sound.setAttribute("preload", "auto");
     this.sound.setAttribute("controls", "none");
     this.sound.style.display = "none";
@@ -10,7 +10,9 @@ class Ambience {
     document.body.appendChild(this.sound);
     this.sound.addEventListener('ended', e => {
       let randomNum = Math.floor(Math.random() * 6)
-      if (randomNum < 4) {
+      if (randomNum < 3) {
+        this.sound.src = "assets/planetheme.mp3"
+      }else if(randomNum >=3 && randomNum < 5) {
         this.sound.src = "assets/ambiance.wav"
       }else{ 
         this.sound.src = 'assets/jazz.flac'
