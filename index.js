@@ -20,7 +20,16 @@ const roundTag = document.getElementById("round")
 const control = document.getElementById("control")
 const controlTxt = document.getElementById("controlTxt")
 const gameStats = document.getElementById("gameStats")
+const planeGameTitle = document.getElementById("plane-game-title")
 newUserSubmit.addEventListener('click', submitUser)
+
+planeGameTitle.addEventListener('click', changeTitle)
+
+function changeTitle() {
+  let titleArr = planeGameTitle.innerText.split("")
+  
+  planeGameTitle.innerText = titleArr.reverse().join("")
+}
 
 function submitUser() {
   woosh.play()

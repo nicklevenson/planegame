@@ -1,6 +1,12 @@
 function gameFunction() {
+  
   let round = 1;
   let tally = 0;
+  const redSquare = document.getElementById("red-square")
+  redSquare.addEventListener('click', function(){
+    tally = tally - 5
+    score.innerText = `Score: ${tally}`
+  })
   playGame()
 
   function playGame() {
@@ -71,7 +77,7 @@ function gameFunction() {
       let planeW = canvas.height * .05;
       let planeH = planeW * 1.25;
 
-      let targetW = canvas.height * .125;
+      let targetW = canvas.height * .2;
       let targetH = targetW;
 
       slideContainer.style.height = (canvas.height) + "px"
@@ -259,7 +265,7 @@ function gameFunction() {
     function getTarget() {
       //range x: 0 - 800; range y: 0 - 500
       let randomY;
-      const randomX = Math.floor(Math.random() * (canvas.width/2))+ (targetW)
+      const randomX = Math.floor(Math.random() * (canvas.width/2))
       if (windDirection === "SE" || windDirection === "SW"){
         randomY = Math.floor(Math.random() * (canvas.height/2)) + targetH
       }else{
