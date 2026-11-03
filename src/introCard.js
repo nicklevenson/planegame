@@ -15,7 +15,7 @@ class introCard{
       usernameContainer.remove()
       gameContainer.style.display = "inline-block"
       newLeaderboard()
-      currentUser.renderCard()
+      getUserInfo()
       gameFunction()
     })
   }

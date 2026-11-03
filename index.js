@@ -32,69 +32,32 @@ function changeTitle() {
 }
 
 function submitUser() {
+  const username = newUserInput.value.trim()
+  if (username === "") {
+    alert("Please enter a username.")
+    return
+  }
   woosh.play()
-  // newUserSubmit.removeEventListener('click', submitUser)
-  // let loading = new loadCard(newUserContainer)
-  // let configObj = {
-  //   method: "POST",
-  //   headers: {
-  //     "Content-Type": "application/json",
-  //     "Accept": "application/json"
-  //   },
-  //   body: JSON.stringify({
-  //     username: newUserInput.value
-  //   })
-  // }
-  // fetch("https://planegame-api.herokuapp.com/users", configObj)
-  // .then(resp => resp.json())
-  // .then(function(json){
-  //   if (json.error === undefined){
-  //     setUser(json)
-  //     loading.hideCard()
-  //   }else{
-  //     alert(json.error.message)
-  //     loading.hideCard()
-  //   }
-  //   newUserSubmit.addEventListener('click', submitUser)
-  //   })
-  // .catch(function(error){ 
-  //   alert("Please check your internet connection.")
-  //   newUserSubmit.addEventListener('click', submitUser)
-  //   loading.hideCard()
-  // })
-  
+  setUser(findOrCreateUser(username))
 }
 
-function setUser(json) {  
-  // currentUser = (new User(json.id, json.username, json.scores))
+function setUser(user) {
+  currentUser = new User(user.id, user.username, [])
   newUserInputs.remove()
-  new introCard('user')
+  new introCard(user.username)
   amb = new Ambience
   amb.play()
 }
+
 function getUserInfo() {
-  new loadCard(userCard)
-  fetch(`https://planegame-api.herokuapp.com/users/${currentUser.id}`)
-  .then(resp => resp.json())
-  .then(function(json) {
-    currentUser = (new User(json.id, json.username, json.scores))
-    currentUser.renderCard()
-  })
-  .catch(e => alert("Connection issues. Scores may not be recorded."))
+  const user = getUser(currentUser.id)
+  currentUser = new User(user.id, user.username, user.scores)
+  currentUser.renderCard()
 }
 
 function newLeaderboard() {
-  let loading = new loadCard(leaderboard)
-  fetch("https://planegame-api.herokuapp.com/scores")
-  .then(resp => resp.json())
-  .then(function(json) {
-    loading.hideCard()
-    let leaderboardObject = new Leaderboard(json.scores)
-    leaderboardObject.renderCard()
-    throwCount = json.all * 10
-    throwCountTitle.innerText = `(${throwCount} throws and counting!)`
-  })
-  .catch(e => alert("Connection issues. Scores may not be recorded."))
-  // setTimeout(newLeaderboard, 5000)
+  const board = getLeaderboard()
+  new Leaderboard(board.scores).renderCard()
+  throwCount = board.all * 10
+  throwCountTitle.innerText = `(${throwCount} throws and counting!)`
 }
-

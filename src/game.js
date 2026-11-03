@@ -21,7 +21,7 @@ function gameFunction() {
       roundTag.innerText = `Round: ${round}/10`
       round ++
     }else {
-      submitScoreToDb(tally)
+      submitScore(tally)
       
       roundTag.innerText = `Game Over.`
       control.innerText = "Game Over! Play Again?"
@@ -44,23 +44,10 @@ function gameFunction() {
     })
   }
 
-  function submitScoreToDb(tally) {
-    let configObj = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Accept": "application/json"
-      },
-      body: JSON.stringify({
-        score:{
-          score: tally,
-          user_id: currentUser.id
-        }
-      })
-    }
-    fetch("https://planegame-api.herokuapp.com/scores", configObj)
-    .then(function(){newLeaderboard(); getUserInfo()})
-    .catch(e => alert("Connection issues. Scores may not be recorded."))
+  function submitScore(tally) {
+    saveScore(currentUser.id, tally)
+    newLeaderboard()
+    getUserInfo()
   }
 
   //ROUND LOGIC
