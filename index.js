@@ -33,42 +33,42 @@ function changeTitle() {
 
 function submitUser() {
   woosh.play()
-  newUserSubmit.removeEventListener('click', submitUser)
-  let loading = new loadCard(newUserContainer)
-  let configObj = {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "Accept": "application/json"
-    },
-    body: JSON.stringify({
-      username: newUserInput.value
-    })
-  }
-  fetch("https://planegame-api.herokuapp.com/users", configObj)
-  .then(resp => resp.json())
-  .then(function(json){
-    if (json.error === undefined){
-      setUser(json)
-      loading.hideCard()
-    }else{
-      alert(json.error.message)
-      loading.hideCard()
-    }
-    newUserSubmit.addEventListener('click', submitUser)
-    })
-  .catch(function(error){ 
-    alert("Please check your internet connection.")
-    newUserSubmit.addEventListener('click', submitUser)
-    loading.hideCard()
-  })
+  // newUserSubmit.removeEventListener('click', submitUser)
+  // let loading = new loadCard(newUserContainer)
+  // let configObj = {
+  //   method: "POST",
+  //   headers: {
+  //     "Content-Type": "application/json",
+  //     "Accept": "application/json"
+  //   },
+  //   body: JSON.stringify({
+  //     username: newUserInput.value
+  //   })
+  // }
+  // fetch("https://planegame-api.herokuapp.com/users", configObj)
+  // .then(resp => resp.json())
+  // .then(function(json){
+  //   if (json.error === undefined){
+  //     setUser(json)
+  //     loading.hideCard()
+  //   }else{
+  //     alert(json.error.message)
+  //     loading.hideCard()
+  //   }
+  //   newUserSubmit.addEventListener('click', submitUser)
+  //   })
+  // .catch(function(error){ 
+  //   alert("Please check your internet connection.")
+  //   newUserSubmit.addEventListener('click', submitUser)
+  //   loading.hideCard()
+  // })
   
 }
 
 function setUser(json) {  
-  currentUser = (new User(json.id, json.username, json.scores))
+  // currentUser = (new User(json.id, json.username, json.scores))
   newUserInputs.remove()
-  new introCard(currentUser.username)
+  new introCard('user')
   amb = new Ambience
   amb.play()
 }
